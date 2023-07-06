@@ -1,0 +1,35 @@
+
+@font-face {
+    font-family: "NoirBold";
+    src: local("NoirBold"),
+     url("./fonts/noir/NoirPro-Bold.ttf") format("truetype");
+    font-weight: 700;
+   }
+  @font-face {
+    font-family: "NoirSemiBold";
+    src: local("NoirSemiBold"),
+     url("./fonts/noir/NoirPro-SemiBold.ttf") format("truetype");
+    font-weight: 500;
+   }
+  
+  @font-face {
+    font-family: "NoirSemiBold";
+    src: local("NoirSemiBold"),
+     url("./fonts/noir/NoirPro-Heavy.ttf") format("truetype");
+    font-weight: 900;
+   }
+  
+  @font-face {
+    font-family: "Tahoma";
+    src: local("Tahoma"),
+     url("./fonts/tahoma/Tahoma.ttf") format("truetype");
+    font-weight: 300;
+   }
+  @font-face {
+    font-family: "TahomaBold";
+    src: local("TahomaBold"),
+     url("./fonts/tahoma/Tahoma-Bold.ttf") format("truetype");
+    font-weight: bold;
+   }
+
+@import '/src/styles/global.scss'

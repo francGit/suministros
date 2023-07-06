@@ -1,0 +1,92 @@
+:root {
+    ///primary
+    --primary-8:#D61119;
+    --primary-7:#E6121A;
+    --primary-6:#ED1C24;
+    --primary-5:#EE2C33;
+    --primary-4:#EF3C42;
+    --primary-3:#F14B52;
+    --primary-2:#F25B61;
+    --primary-1:#F36B70;
+    --primary: #ED1C24;
+    --primary-light: #F36B70;
+    ///secondary
+    --secondary-8:#080808;
+    --secondary-7:#101010;
+    --secondary-6:#191919;
+    --secondary-5:#222222;
+    --secondary-4:#2A2A2A;
+    --secondary-3:#333333;
+    --secondary-2:#3B3B3B;
+    --secondary-1:#444444;
+    --secondary-light: #444444;
+    ///terciary
+    --terciary-8:#FFFFFF;
+    --terciary-7:#F8F8F8;
+    --terciary-6:#F0F0F0;
+    --terciary-5:#E8E8E8;
+    --terciary-4:#DFDFDF;
+    --terciary-3:#D7D7D7;
+    --terciary-2:#CECECE;
+    --terciary-1:#C6C6C6;
+    --terciary: #F0F0F0;
+    --terciary-light: #F8F8F8;
+    background-color: var(--terciary);
+
+/////FONTS
+
+
+
+  }
+ 
+  ////Custom fonts
+  /// 
+  
+
+  
+  a {
+    font-weight: 500;
+    color: var(--primary-6);
+    text-decoration: inherit;
+    cursor: pointer;
+  }
+  a:hover {
+    color:var(--primary-3);
+  }
+  
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px; 
+    font-family: "Tahoma";
+  }
+  
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1; 
+  }
+  h1,h2,h3,h4,h5{
+    margin: 0;
+  }
+  
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  button:hover {
+    border-color: #646cff;
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+ 
