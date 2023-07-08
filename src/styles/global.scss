@@ -34,7 +34,9 @@
     background-color: var(--terciary);
 
 /////FONTS
-
+    #root{
+      width: 100%;
+    }
 
 
   }
@@ -42,7 +44,21 @@
   ////Custom fonts
   /// 
   
-
+  .font-noir-bold{
+    font-family: "NoirBold";
+  }
+  .font-noir-semibold{
+    font-family: "NoirSemiBold";
+  }
+  .font-noir-heavy{
+    font-family: "NoirHeavy";
+  }
+  .font-tahoma{
+    font-family: "Tahoma";
+  }
+  .font-tahoma-bold{
+    font-family: "TahomaBold";
+  }
   
   a {
     font-weight: 500;
@@ -55,10 +71,9 @@
   }
   
   body {
-    margin: 0;
-    display: flex;
-    place-items: center;
+    margin: 0; 
     min-width: 320px; 
+    min-height: 100vh;
     font-family: "Tahoma";
   }
   

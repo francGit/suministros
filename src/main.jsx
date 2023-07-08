@@ -7,9 +7,11 @@ import './fonts/noir/NoirPro-Heavy.ttf';
 import './fonts/tahoma/Tahoma.ttf';
 import './fonts/tahoma/Tahoma-Bold.ttf';
 import './index.scss'
+import { CssBaseline } from '@mui/material';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <CssBaseline/>
     <App />
   </React.StrictMode>,
 )

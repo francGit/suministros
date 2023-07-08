@@ -13,8 +13,8 @@
    }
   
   @font-face {
-    font-family: "NoirSemiBold";
-    src: local("NoirSemiBold"),
+    font-family: "NoirHeavy";
+    src: local("NoirHeavy"),
      url("./fonts/noir/NoirPro-Heavy.ttf") format("truetype");
     font-weight: 900;
    }
@@ -32,4 +32,5 @@
     font-weight: bold;
    }
 
-@import '/src/styles/global.scss'
+@import '/src/styles/global.scss';
+@import '/src/styles/home.scss';

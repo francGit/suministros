@@ -1,0 +1,40 @@
+.logo{ 
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 0.8rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+    max-width: 180px;
+    & img{
+        display: block;
+        width: 100%;
+        max-width: 180px;
+        margin: auto;
+    }
+    & h1{
+        position: relative;
+        z-index: 2;
+    }
+    &::after{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%; 
+        background: #ffffff47;
+        backdrop-filter: blur(10px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+    }
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 2rem;
+}
