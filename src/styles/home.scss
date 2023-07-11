@@ -1,10 +1,11 @@
 .logo{ 
-    border-radius: 12px;
+    border-radius: 26px;
     box-sizing: border-box;
     padding: 0.8rem 1.6rem;
     position: relative;
     overflow: hidden;
     max-width: 180px;
+    
     & img{
         display: block;
         width: 100%;
@@ -20,12 +21,13 @@
         display: block;
         width: 100%;
         height: 100%; 
-        background: #ffffff47;
+        background: #ffffff;
         backdrop-filter: blur(10px);
         position: absolute;
         left: 0;
         top: 0;
         z-index: 1;
+        border: 1px solid #F2F2F2;
     }
 }
 
@@ -37,4 +39,113 @@ header{
     margin-left: auto;
     margin-right: auto;
     top: 2rem;
+    z-index: 3;
+
+    & .col-md-8{
+        display: flex;
+        align-items: center;
+    }
+
+    & .navBarMenu{ 
+        position: relative;
+        width: 100%; 
+        border-radius: 20px;
+        padding: 1rem 2rem;
+        overflow: hidden;
+        border: 1px solid #F2F2F2;
+        & ul{ 
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-left: 0;
+            margin-bottom: 0;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+            & li{
+                text-transform: uppercase;
+                & a{
+                     
+                    color: var(--secondary-1-1);
+                    opacity: 0.8;
+                    transition:all 0.3s;
+                    position: relative;
+                    &::after{
+                        content: '';
+                        display: block;
+                        width: 0%;
+                        height: 1px; 
+                        position: absolute;
+                        transition: all 0.3s;
+                    }
+
+                    &:hover, &.active{ 
+                        color: var(--primary);
+                        &:after{
+                            content: '';
+                            display: block;
+                            width: 100%;
+                            height: 1px;
+                            background-color: var(--primary);
+                            position: absolute;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        &::after{
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%; 
+            background: #ffffff47;
+            backdrop-filter: blur(10px);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            
+        }
+    }
+}
+.main{
+    min-height: 94vh;
+}
+
+.footer{
+    background-color: var(--secondary-6);
+    color: var(--terciary-8);
+    padding: 2rem 1rem;
+    & .logoFooter{
+        & img{
+            display: block;
+            width: 100%;
+            max-width: 220px;
+        }
+    }
+}
+
+.Hero{
+    background: url(../../public/bghome.png);
+    background-size: 180%;
+    background-repeat: no-repeat;
+    background-position: 0 33%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: 10%;
+    .box{
+        overflow: hidden;
+        width: 46vw;
+        position: relative;
+        z-index: 2;
+    }
+    & .titleHome{
+        color: var(--primary);
+        font-family: "NoirHeavy";
+        font-size: 5vw;
+        width: 46vw; 
+    }
 }

@@ -7,7 +7,7 @@ export const Header = () => {
     <>
       <header> 
        <section>
-          <div className="container-fluid">
+          <div className="container">
             <div className="row d-flex justify-content-between">
                 <div className="col-md-2">
                 <div className="logo">
@@ -17,13 +17,20 @@ export const Header = () => {
             </div>
                 </div>
                 <div className="col-md-8">
-                <nav>
+                <nav className="navBarMenu">
+                <div className="iconMenu"></div>
                 <ul>
                     <li>
                         <NavLink to="/" className={({isActive}) => isActive ? "active" : "" } >Inicio</NavLink>
                     </li>
                     <li>
                         <NavLink to="/productos" className={({isActive}) => isActive ? "active" : "" }>Productos</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/producto/1" className={({isActive}) => isActive ? "active" : "" }>Producto</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/categoria" className={({isActive}) => isActive ? "active" : "" }>Categoria</NavLink>
                     </li>
                  
                     <li>
@@ -32,8 +39,13 @@ export const Header = () => {
                     <li>
                         <NavLink to="/contacto" className={({isActive}) => isActive ? "active" : "" }>Contacto</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/contacto" target="_blank" className={({isActive}) => isActive ? "active" : "" }>Brochure</NavLink>
+                    </li>
                 </ul>
+                
             </nav>
+ 
                 </div>
             </div>
           </div>
