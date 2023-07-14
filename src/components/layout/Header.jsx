@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
 import Logo from '../../assets/logo.svg'  
+import Icondwn from '../../assets/Iconly-Download.svg'  
 import { Container, Grid } from "@mui/material"
 
 export const Header = () => {
@@ -40,7 +41,7 @@ export const Header = () => {
                         <NavLink to="/contacto" className={({isActive}) => isActive ? "active" : "" }>Contacto</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/contacto" target="_blank" className={({isActive}) => isActive ? "active" : "" }>Brochure</NavLink>
+                        <NavLink to="" target="_blank" className="brochure">Brochure <i><img src={Icondwn} alt="" /></i></NavLink>
                     </li>
                 </ul>
                 

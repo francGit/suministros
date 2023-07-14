@@ -101,7 +101,7 @@ header{
             display: block;
             width: 100%;
             height: 100%; 
-            background: #ffffff47;
+            background: rgb(255 255 255 / 71%);
             backdrop-filter: blur(10px);
             position: absolute;
             left: 0;
@@ -148,4 +148,87 @@ header{
         font-size: 5vw;
         width: 46vw; 
     }
+}
+
+//// slider hero home
+/// 
+.mySwiperHero{
+    & .swiper-button-prev{
+        left: 82%;
+        top: 86%;
+        position: absolute;
+        z-index: 100;
+        padding: 1rem 1.8rem;
+        border-radius: 26px;
+        background-color: var(--terciary-8);
+        color: var(--primary);
+        &:after{
+            font-size: 1.4rem;
+        }
+        
+    }
+    & .swiper-button-next{
+        right: 2%;
+        top: 86%;
+        position: absolute;
+        z-index: 100;
+        padding: 1rem 1.8rem;
+        border-radius: 26px;
+        background-color: var(--terciary-8);
+        color: var(--primary);
+        &:after{
+            font-size: 1.4rem;
+        }
+        
+    }
+}
+.brochure{
+    background-color: var(--primary);
+    color: var(--terciary-8) !important;
+    padding:0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-transform:capitalize;
+    position: relative;
+    padding-right: 50px;
+    &:hover::after, &.active::after{
+        display: none !important;
+    }
+    i{ 
+        background-color: var(--secondary-1-1);
+        position: absolute;
+        right: 0;
+        box-sizing: border-box;
+        padding: 8px 12px;
+        border-radius: 20px;
+    }
+}
+.boxDes{
+    background-color: var(--terciary-9);
+    padding: 1.6rem 3rem;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+}
+.boxMarksOne{
+    background-color: var(--terciary-8);
+    border: 1px solid var(--terciary-9);
+    padding: 1rem;
+    border-radius: 22px;
+    & .swiper-slide{
+        min-height: 54px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+}
+
+.gap-2{
+gap: 40px;    
 }

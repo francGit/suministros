@@ -32,13 +32,13 @@ export const Footer = () => {
        </ul>
        </div>
      </div>
-     <div className="row pt-4">
+     <div className="row pt-4 justify-content-between">
       <hr />
       <div className="col-md-4">
         <small>Copyright © 2023 Todos los derechos reservados.</small>
       </div>
       <div className="col-md-4">
-        <ul>
+        <ul className='d-flex justify-content-end gap-2'>
           <li>
             <a href=""><small>Términos de uso</small></a>
           </li>
