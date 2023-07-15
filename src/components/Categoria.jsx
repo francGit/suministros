@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Categoria = () => {
   return (
-    <div>Categoria</div>
+    <div className='main'>Categoria</div>
   )
 }

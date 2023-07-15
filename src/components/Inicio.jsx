@@ -6,6 +6,8 @@ import { Navigation,EffectFade,Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
+import { SplitText } from '@cyriacbr/react-split-text';
+import { NavLink } from 'react-router-dom';
 const Inicio = () => {
 
   return (
@@ -17,7 +19,12 @@ const Inicio = () => {
                     <div className="col-md-5 pt-3">
                       <h3>Dosificación, bombeo de fluidos, y plásticos de ingeniería.</h3>
                       <div className="box">
-                      <h1 className='titleHome'>LIDERES EN GESTIÓN A SUS NECESIDADES</h1>
+                      <h1 className='titleHome'>
+                        <SplitText  >
+                        LIDERES EN GESTIÓN A SUS NECESIDADES
+                        </SplitText>
+                        
+                      </h1>
                       </div>
                     </div>
                     <div className="col-md-7">
@@ -40,7 +47,7 @@ const Inicio = () => {
                      
                     </div>
                 </div>
-                <div className="row pt-5">
+                <div className="row pt-5 pb-5">
                 <div className="col-md-6">
                       <div className="boxDes">
                         <p>Nos dedicamos a comercializar soluciones integrales  para nuestros clientes en los campos petrolero, petroquímico, química industrial, textil, cementeras, agroindustrial y a  la fabricación de láminas plásticas para órtesis y prótesis.</p>
@@ -48,7 +55,7 @@ const Inicio = () => {
                        
                     </div>
                     <div className="col-md-6">
-                      <h4 className='text-center mb-4'><b>REPRESENTANTES DIRECTOS</b></h4>
+                      <h4 className='text-center mb-2'><b>REPRESENTANTES DIRECTOS</b></h4>
                       <div className="boxMarksOne">
                       <Swiper
                         modules={[Autoplay]} 
@@ -79,7 +86,7 @@ const Inicio = () => {
                           <SwiperSlide> <img src="logo4.png" className='img-fluid' alt="" /> </SwiperSlide> 
                       </Swiper> 
                       </div>
-                      <h5 className='text-center mt-4 mb-4'><b>DISTRIBUIDORES DE:</b></h5>
+                      <h5 className='text-center mt-2 mb-2'><b>DISTRIBUIDORES DE:</b></h5>
                       <div className="boxMarksOne">
                       <Swiper
                         modules={[Autoplay]} 
@@ -114,6 +121,37 @@ const Inicio = () => {
                     </div>
                 </div>
             </div>
+        </section>
+        <section className='bannerHome'>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8">
+                        <div className="bannerPromotion">
+                           <div className="info">
+                            <h2 className='title font-noir-heavy'>Visitanos Stand 8046: DOSIVAC - SIS S.A.S.</h2>
+                            <h5>Acompañenos en el Centro NRG PARK HUSTON, TEXAS, USA.</h5>
+                            <h3>Lunes 6 de mayo de 2024 a jueves 9 de mayo de 2023.</h3>
+                            <h2>CELEBRATING 54 YEARS 1969 - 2023</h2>
+                           </div>
+                        <div className="overlay"></div>
+                        </div>
+              </div>
+              <div className="col-md-4">
+               <div className="bannerRenta">
+                      <div className="info">
+                          <h2 className='title font-noir-heavy'>RENTA DE EQUIPOS</h2>
+                          <h4>Con opción de <b>Compra</b></h4>
+
+                      </div>
+                          <img src="./EQUIPOS.png" className='img-fluid' alt="" />
+                      <div className="cta">
+                          <NavLink>Ver más</NavLink>
+                      </div>
+                      <div className="overlay"></div>
+               </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </>

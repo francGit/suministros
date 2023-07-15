@@ -1,5 +1,9 @@
 import React from 'react'
-import LogoFooter from '../../assets/logo-withe.svg'
+import LogoFooter from '../../assets/logo-withe.svg' 
+
+import { FaFacebookF } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa';
 export const Footer = () => {
   return (
     <section className="footer">
@@ -24,11 +28,11 @@ export const Footer = () => {
         <p>sis@suministrossis.com</p> 
        </div>
        <div className="col-md-2">
-        <h5>SÍGUENOS EN REDES</h5>
-       <ul>
-         <li><a href="https://www.behance.net/famupinto" target="_blank" rel="noreferrer">BE</a></li>
-         <li><a href="https://github.com/francGit" target="_blank" rel="noreferrer">GIT</a></li>
-         <li><a href="https://www.linkedin.com/in/francisco-jose-muneton-pinto/" target="_blank" rel="noreferrer">LIN</a></li>
+        <h5>Síguenos:</h5>
+       <ul className='px-0 d-flex justify-content-start gap-2 redes'>
+         <li><a href="https://www.behance.net/famupinto" target="_blank" rel="noreferrer"><FaFacebookF /></a></li>
+         <li><a href="https://github.com/francGit" target="_blank" rel="noreferrer"><FaTwitter /></a></li>
+         <li><a href="https://www.linkedin.com/in/francisco-jose-muneton-pinto/" target="_blank" rel="noreferrer"><FaLinkedinIn /></a></li>
        </ul>
        </div>
      </div>

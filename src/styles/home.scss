@@ -69,7 +69,7 @@ header{
                 & a{
                      
                     color: var(--secondary-1-1);
-                    opacity: 0.8;
+                    opacity: 0.9;
                     transition:all 0.3s;
                     position: relative;
                     &::after{
@@ -126,6 +126,10 @@ header{
             max-width: 220px;
         }
     }
+
+    & ul{
+        list-style: none;
+    }
 }
 
 .Hero{
@@ -133,7 +137,7 @@ header{
     background-size: 180%;
     background-repeat: no-repeat;
     background-position: 0 33%;
-    min-height: 100vh;
+    min-height: 80vh;
     box-sizing: border-box;
     padding-top: 10%;
     .box{
@@ -194,6 +198,7 @@ header{
     text-transform:capitalize;
     position: relative;
     padding-right: 50px;
+    opacity: 1 !important;
     &:hover::after, &.active::after{
         display: none !important;
     }
@@ -231,4 +236,136 @@ header{
 
 .gap-2{
 gap: 40px;    
+}
+
+.redes{
+    
+    li{
+        margin-top: 1rem;
+        a{
+            background-color: var(--primary);
+            color: var(--terciary-8);
+            padding: 0.6rem 0.8rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            &:hover{
+                background-color: var(--primary-3);
+            }
+        }
+    }
+}
+
+.box404{   
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10%;
+    & .boxVideo{
+        overflow: hidden;
+        width: 100%;
+        height: 60%;
+        position: relative;
+        & video{ 
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 120%;
+        }
+    }
+}
+
+.bannerHome{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: var(--terciary-10);
+}
+.bannerPromotion{
+    background: url(../imgCompra.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color: var(--terciary-9);
+    padding: 2rem;
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 25vh;
+    .info{
+        position: relative;
+        z-index: 2;
+        box-sizing: border-box;
+        padding-right: 3rem;
+        & .title{
+            font-family: "NoirHeavy";
+            font-size: 2.8rem;
+            text-transform: uppercase;
+        }
+    }
+    .overlay{
+        background-color: var(--secondary-6);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+    }
+}
+.bannerRenta{
+    background: url(../bgequipos.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color: var(--terciary-9);
+    padding: 2rem;
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    & img{
+        position: relative;
+        z-index: 2;
+    }
+    .info{
+        position: relative;
+        z-index: 2;
+        & .title{
+            font-family: "NoirHeavy";
+        }
+    }
+    .overlay{
+        background-color: var(--secondary-6);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+    }
+    .cta{
+        background-color: var(--primary);
+        border-radius: 20px;
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s;
+        &:hover{
+            background-color: var(--primary-3);
+        }
+       & a{
+        color: var(--terciary-8) !important;
+        opacity: 1 !important;
+        padding: 0.6rem 2rem;
+        display: block;
+        text-transform: uppercase;
+       }
+    }
 }
