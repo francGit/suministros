@@ -126,7 +126,9 @@ header{
             max-width: 220px;
         }
     }
-
+    & hr{
+        opacity: 0.03;
+    }
     & ul{
         list-style: none;
     }
@@ -158,7 +160,7 @@ header{
 /// 
 .mySwiperHero{
     & .swiper-button-prev{
-        left: 82%;
+        left: 80%;
         top: 86%;
         position: absolute;
         z-index: 100;
@@ -290,7 +292,10 @@ gap: 40px;
     padding: 2rem;
     overflow: hidden;
     border-radius: 20px;
-    min-height: 25vh;
+    min-height: 32vh;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
     .info{
         position: relative;
         z-index: 2;
@@ -323,12 +328,13 @@ gap: 40px;
     padding: 2rem;
     overflow: hidden;
     border-radius: 20px;
-    min-height: 50vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-content: center;
     align-items: center;
+    height: 100%;
     & img{
         position: relative;
         z-index: 2;
@@ -364,6 +370,40 @@ gap: 40px;
         color: var(--terciary-8) !important;
         opacity: 1 !important;
         padding: 0.6rem 2rem;
+        display: block;
+        text-transform: uppercase;
+       }
+    }
+}
+.bannerContact{
+    background-color: var(--terciary-9);
+    padding: 3rem;
+    margin-top: 2rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    & .info{
+        max-width:80% ;
+    }
+    & .title{
+        font-family: "NoirHeavy";
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        color: var(--primary);
+    }
+    & .cta{
+        background-color: var(--primary);
+        border-radius: 20px;
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s;
+        &:hover{
+            background-color: var(--primary-3);
+        }
+       & a{
+        color: var(--terciary-8) !important;
+        opacity: 1 !important;
+        padding: 0.6rem 1.8rem;
         display: block;
         text-transform: uppercase;
        }

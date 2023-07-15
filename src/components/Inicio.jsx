@@ -135,6 +135,15 @@ const Inicio = () => {
                            </div>
                         <div className="overlay"></div>
                         </div>
+                        <div className="bannerContact">
+                          <div className="info">
+                              <h2 className='title'>CONTÁCTENOS</h2>
+                              <p>Si desea más información respecto a nuestro productos o requiere ayuda, puede hacerlo desde el siguiente botón.</p>
+                          </div>
+                          <div className="cta">
+                          <NavLink>Ver más</NavLink>
+                      </div>
+                        </div>
               </div>
               <div className="col-md-4">
                <div className="bannerRenta">
