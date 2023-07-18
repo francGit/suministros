@@ -8,11 +8,16 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import { SplitText } from '@cyriacbr/react-split-text';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 const Inicio = () => {
 
   return (
     <>
-      <div className="main">
+      <motion.div className="main"
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        exit={{opacity:0, transition:{duration:1}}}
+      >
         <section className='Hero'>
             <div className="container">
                 <div className="row">
@@ -162,7 +167,7 @@ const Inicio = () => {
             </div>
           </div>
         </section>
-      </div>
+      </motion.div>
     </>
   
   )

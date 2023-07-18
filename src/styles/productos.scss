@@ -1,0 +1,263 @@
+.headerProd{
+    background-color: var(--terciary-9);
+    width: 100%;
+    min-height: 20vh;
+    margin-top: 150px;
+    border-radius: 0 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    & .title{
+        font-family: "NoirHeavy";
+        font-size: 3.6rem;
+    }
+
+    & select{
+        position: relative;
+        border: 1px solid var(--primary);
+        background: url(../arrowSelect.svg);
+        background-repeat: no-repeat;
+        background-position: 96% 50%;
+        background-size: 40px;
+        min-height: 44px;
+        min-width: 160px;
+        border-radius: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &::after{
+            content: 'hello';
+        }
+    }
+    & .boxfilter{ 
+        & i{
+            display: inline-block;
+            width: 20px;
+            & svg{
+                position: relative;
+                display: block;
+                width: 100%;
+                top: 4px;
+            }
+        }
+        & h3{
+            font-family: "NoirHeavy";
+            color: var(--primary);
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+    & .boxItemFilters{
+        display: flex;
+        gap: 20px;
+    }
+}
+
+.gridCards{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content:stretch;
+    
+}
+
+.cardItem{
+    width: 100%;
+    max-width:320px;
+    background-color: var(--terciary-10);
+    padding: 2rem;
+    border-radius: 22px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    border: 1px solid var(--terciary-9);
+    transition:all 0.3s;
+
+    &:hover{
+        & .body{
+            & img{
+                filter: grayscale(0);
+                transition: 0.3s;
+                transform: scale(0.9);
+            }
+        }
+    }
+    & .header{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        & h2{
+            font-family: "NoirHeavy";
+            font-size: 1.6rem;
+            color: var(--primary);
+            line-height: 0.8;
+        }
+        & .flag{
+            & img{
+                width: 30px;
+                height: 30px;
+                object-fit: cover; 
+                object-position: center;
+                border-radius: 50px;
+            }
+        }
+    }
+    .body{
+        & img{
+            filter: grayscale(1);
+            transform: scale(1);
+            transition: all 0.3s;
+        }
+    }
+    .brand{
+        & img{
+            width: 140px; 
+            object-fit: contain;
+            height: 60px;
+        }
+    }
+    & .cta{
+        & a{
+            background-color: var(--terciary-8);
+            color: var(--primary);
+            padding: 0.4rem 2rem;
+            display: block;
+            margin: 1rem auto;
+            border-radius: 22px;
+            font-weight: 400;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            transition: all 0.3s;
+            &:hover{
+                background-color: var(--primary);
+                color: var(--terciary-8);
+            }
+        }
+    }
+
+}
+
+.catBox{
+    .boxLeft{
+        background-color: var(--terciary-9);
+        border-radius: 0 20px 20px 0;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        & .info {
+    position: relative;
+    z-index: 2;
+        }
+
+        & .brand{
+            position: relative;
+            z-index: 2;
+            margin-bottom: 2rem;
+        } 
+        .overlay{
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%; 
+            top: 0;
+            left: 0;
+            z-index: 1;
+            mix-blend-mode: multiply;
+            & img{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+.boxTop{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2rem;
+    align-items: end;
+    .cta{
+        background-color: var(--primary);
+        border-radius: 20px;
+        position: relative;
+        min-width: 150px;
+        z-index: 2;
+        transition: all 0.3s;
+        &:hover{
+            background-color: var(--primary-3);
+        }
+       & a{
+        color: var(--terciary-8) !important;
+        opacity: 1 !important;
+        padding: 0.6rem 2rem;
+        display: block;
+        text-transform: uppercase;
+       }
+    }
+}
+
+.boxFiles{
+    display: flex;
+    gap: 30px;
+    align-items: center; 
+    width: 90%;
+    flex-wrap: wrap;
+    
+
+    & .listFiles{
+        display: flex;
+        flex-wrap: wrap; 
+        flex-direction: row;
+        gap: 15px;
+        & .file{
+            border: 1px solid var(--secondary-1-1);
+            padding: 0.4rem 1rem;
+            border-radius: 20px; 
+            background-color: transparent;
+            transition: all 0.3s;
+            & span{
+                color: var(--secondary-1-1);
+            }
+            & i{
+                position: relative;
+                top: -3px;
+            }
+            &:hover{
+                background-color: var(--primary);
+                border: 1px solid var(--primary);
+                & span{
+                    color: var(--terciary-8);
+                }
+                & i{
+                    filter: brightness(0.5) !important;
+                }
+            }
+
+        }
+    }
+}
+
+.hrline{
+    border-bottom: 1px dashed var(--secondary-1-1);
+    background: transparent;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.contCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: stretch;
+}
+
+ 

@@ -1,0 +1,9 @@
+.boxOrigen{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    & .brand{
+        max-width: 160px;
+    }
+}

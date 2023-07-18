@@ -1,4 +1,4 @@
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
+import {Routes, Route, BrowserRouter } from 'react-router-dom'
 import Inicio from '../components/Inicio'
 import Page404 from '../components/Page404'
 import Productos from '../components/Productos' 
@@ -6,10 +6,14 @@ import { Contacto } from '../components/Contacto'
 import { Nosotros } from '../components/Nosotros' 
 import { Header } from '../components/layout/Header'
 import { Categoria } from '../components/Categoria' 
+import { SubCategoria } from '../components/SubCategoria' 
 import { Footer } from '../components/layout/Footer'
 import { Producto } from '../components/Producto'
- const MyRoutes = () => {
+import ScrollToTop from '../helpers/ScrollTop'
+import { AnimatePresence } from 'framer-motion'
+ const MyRoutes = () => { 
   return (
+    <AnimatePresence>
    <BrowserRouter>
         {/* HEADER */}
         <Header />
@@ -22,14 +26,17 @@ import { Producto } from '../components/Producto'
           <Route path='*' element={<Page404/>} />
           <Route path='/productos' element={<Productos/>} />     
           <Route path='/categoria' element={<Categoria/>} />  
+          <Route path='/subcategoria' element={<SubCategoria/>} />  
           <Route path='/nosotros' element={<Nosotros/>} />  
           <Route path='/contacto' element={<Contacto/>} />
           <Route path='/producto/:id' element={<Producto/>} />
         </Routes>
        
         {/* FOOTER */}
+        <ScrollToTop/>
         <Footer/>
    </BrowserRouter>
+   </AnimatePresence>
   )
 }
 
