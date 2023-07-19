@@ -7,3 +7,46 @@
         max-width: 160px;
     }
 }
+
+.mySwiperThmbBox{
+    max-width: 90%;
+    margin: auto;
+    // background-color: var(--terciary-light);
+    // border: 1px solid var(--terciary-9);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    & .swiper-slide{
+        cursor: pointer;
+        filter: grayscale(1);
+        & img{
+            max-width: 60px;
+        }
+
+        &.swiper-slide-thumb-active{
+            filter: grayscale(0);
+        }
+    }
+}
+
+.especs{
+    padding-top: 1rem;
+    & ul{
+        padding: 0;
+        list-style: none;
+        color: var(--secondary-1-1);
+        & li{
+        display: flex;
+        align-items: end;
+        margin-bottom: 1rem;
+        border-bottom: 1px dashed var(--terciary-1);
+        padding-bottom: 1rem;
+        & h3{
+            font-family: "NoirSemiBold";
+        }
+        & p{
+            margin-bottom: 0;
+            margin-left: 1rem;
+        }    
+        }
+    }
+}

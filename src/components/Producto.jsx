@@ -24,12 +24,16 @@ export const Producto = () => {
           <div className="row">
             <div className="col-md-5">
               <div className="infoImg">  
-                  <Swiper
-                    spaceBetween={10}
-                    navigation={true}
-                    thumbs={{ swiper: thumbsSwiper }}
-                    modules={[FreeMode, Navigation, Thumbs]}
-                    className="mySwiperHero"
+                  <Swiper 
+                      style={{
+                        '--swiper-navigation-color': '#fff',
+                        '--swiper-pagination-color': '#fff',
+                      }}
+                      spaceBetween={10}
+                      navigation={true}  
+                      className="mySwiperThmbBox2"
+                      thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
+                      modules={[FreeMode, Navigation, Thumbs]} 
                   >
                       <SwiperSlide>
                       <img src="../D15.png" className="img-fluid" alt="" />
@@ -40,8 +44,19 @@ export const Producto = () => {
                       <SwiperSlide>
                       <img src="../D15.png" className="img-fluid" alt="" />
                       </SwiperSlide>
+                      <SwiperSlide>
+                      <img src="../D15.png" className="img-fluid" alt="" />
+                      </SwiperSlide> 
                   </Swiper>
-                  <Swiper >
+                  <Swiper
+                    onSwiper={setThumbsSwiper}
+                    spaceBetween={10}
+                    slidesPerView={3}
+                    freeMode={true}
+                    watchSlidesProgress={true}
+                    modules={[FreeMode, Navigation, Thumbs]}  
+                     className="mySwiperThmbBox"
+                  >
                       <SwiperSlide>
                       <img src="../D15.png" className="img-fluid" alt="" />
                       </SwiperSlide>
@@ -51,6 +66,9 @@ export const Producto = () => {
                       <SwiperSlide>
                       <img src="../D15.png" className="img-fluid" alt="" />
                       </SwiperSlide>
+                      <SwiperSlide>
+                      <img src="../D15.png" className="img-fluid" alt="" />
+                      </SwiperSlide> 
                   </Swiper>
 
                 
@@ -84,7 +102,7 @@ export const Producto = () => {
                       
                       </div> 
                   </div>
-                  <h4 className='pt-4'>País de origen y marca:</h4>
+                  <h4 className='pt-4 pb-4'>País de origen y marca:</h4>
                     <div className="boxOrigen">
                     <span className="flag">
                         <img src="../arg.png" alt="" />
@@ -93,7 +111,23 @@ export const Producto = () => {
                       <img src="../indesur.png" className="img-fluid" alt="" />
                     </div>
                     </div>
-                  <h2 className="mt-5">REFERENCIAS</h2>
+                  <h2 className="mt-5">ESPECIFICACIONES</h2>
+                  <div className="especs">
+                    <ul>
+                      <li>
+                        <h3>Título:</h3>
+                        <p>Descripción</p>
+                      </li>
+                      <li>
+                        <h3>Título:</h3>
+                        <p>Descripción</p>
+                      </li>
+                      <li>
+                        <h3>Título:</h3>
+                        <p>Descripción</p>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
 
               </div>
