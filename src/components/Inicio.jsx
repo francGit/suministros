@@ -5,8 +5,7 @@ import { Navigation,EffectFade,Autoplay } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
-import { SplitText } from '@cyriacbr/react-split-text';
+import 'swiper/css/effect-fade'; 
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 const Inicio = () => {
@@ -25,9 +24,9 @@ const Inicio = () => {
                       <h3>Dosificación, bombeo de fluidos, y plásticos de ingeniería.</h3>
                       <div className="box">
                       <h1 className='titleHome'>
-                        <SplitText  >
+                        
                         LIDERES EN GESTIÓN A SUS NECESIDADES
-                        </SplitText>
+                         
                         
                       </h1>
                       </div>

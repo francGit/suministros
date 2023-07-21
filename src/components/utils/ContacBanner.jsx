@@ -5,15 +5,12 @@ import { NavLink } from "react-router-dom"
     <div className="bannerContact">
         <div className="container-fluid">
           <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-8">
             <h2>Contáctenos</h2>
-            <p>Incididunt labore dolore magna aliqua enim veniamullamco.</p>
+            <p>Si desea más información respecto a nuestro productos o requiere ayuda, puede hacerlo desde el siguiente botón.</p>
             </div>
-            <div className="col-md-5">
-                <p>Incididunt labore dolore magna aliqua enim veniamullamco laboris nisiut aliquip.
-            Incididunt labore dolore magna aliqua enim veniamullamco laboris nisiut aliquip.</p>
-            </div>
-            <div className="col-md-3">
+            
+            <div className="col-md-4">
              <div className="cta">  
                   <NavLink to="/contacto">Contáctenos</NavLink>
               </div>

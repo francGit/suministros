@@ -130,7 +130,16 @@ header{
         opacity: 0.03;
     }
     & ul{
-        list-style: none;
+        list-style: none; 
+        gap: 20px!important;
+        a{
+            color: var(--terciary-9);
+            font-weight: 400;
+            transition: 0.3s;
+            &:hover{
+                color: var(--primary);
+            }
+        }
     }
 }
 
