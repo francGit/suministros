@@ -1,3 +1,21 @@
 .Contact{
-    background-color: var(--secondary-1-1);
+    background-color: var(--terciary-10);
+    min-height: 82vh;
+
+    & .titulo{
+        font-family: "NoirHeavy";
+        text-transform: uppercase;
+    }
+
+    & #sendContact{
+background-color: var(--primary);
+font-family: "NoirHeavy";
+font-size: 1rem;
+letter-spacing: 2px;
+
+    }
+
+    .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Multifouse{
+        color: var(--primary);
+    }
 }

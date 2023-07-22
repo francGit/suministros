@@ -49,7 +49,7 @@ import CardProdb  from "./layout/CardProdb"
                   <p>Las bombas de metal son las indicadas para el manejo de hidrocarburos, solventes y barros. Son ideales para trabajo pesado y a altas temperaturas. Se las utiliza habitualmente como bombas de achique o de trasvase de líquidos inflamables. La parte mojada de estos equipos está construida en aluminio fundido, fundición gris o acero al carbono.</p>
                   <div className="actions mt-5">
                       <div className="cta"> 
-                            <NavLink to="/productos"><i><FaAngleLeft/></i> VOLVER</NavLink>
+                            <NavLink > CONTACTO </NavLink>
                         </div>
                       <div className="listFiles">
                         <div className="file">
