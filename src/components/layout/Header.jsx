@@ -24,7 +24,7 @@ export const Header = () => {
                 </h1>
                  </div>
                 </div>
-                <div className="col-md-9 col-sm-4 mdLogo">
+                <div className="col-md-10 col-sm-4 mdLogo">
                 <div className="boxNavBar">
                     <div className="menuToggle "></div>
                     <nav className="navBarMenu">  
@@ -35,15 +35,21 @@ export const Header = () => {
                             <li>
                                 <NavLink to="/productos" className={({isActive}) => isActive ? "active" : "" }>Productos</NavLink>
                             </li>
-                            <li>
+                            {/* <li>
                                 <NavLink to="/producto/1" className={({isActive}) => isActive ? "active" : "" }>Producto</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/categoria" className={({isActive}) => isActive ? "active" : "" }>Categoria</NavLink>
                             </li>
-                        
+                         */}
                             <li>
                                 <NavLink to="/nosotros" className={({isActive}) => isActive ? "active" : "" }>Nosotros</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/documentacion" className={({isActive}) => isActive ? "active" : "" }>Documentación</NavLink> 
+                            </li>
+                            <li>
+                              <NavLink to="/galeria" className={({isActive}) => isActive ? "active" : "" }>Galeria</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/contacto" className={({isActive}) => isActive ? "active" : "" }>Contacto</NavLink>

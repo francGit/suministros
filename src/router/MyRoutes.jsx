@@ -11,6 +11,9 @@ import { Footer } from '../components/layout/Footer'
 import { Producto } from '../components/Producto'
 import ScrollToTop from '../helpers/ScrollTop'
 import { AnimatePresence } from 'framer-motion'
+import { Soporte } from '../components/Documentacion'
+import { InternaSoporte } from '../components/InternaSoporte'
+import { Galeria } from '../components/Galeria'
  const MyRoutes = () => { 
   return (
     <AnimatePresence>
@@ -24,12 +27,16 @@ import { AnimatePresence } from 'framer-motion'
           <Route path='/' element={<Inicio />} />
           <Route path='/inicio' element={<Inicio />} />
           <Route path='*' element={<Page404/>} />
-          <Route path='/productos' element={<Productos/>} />     
           <Route path='/categoria' element={<Categoria/>} />  
           <Route path='/subcategoria' element={<SubCategoria/>} />  
-          <Route path='/nosotros' element={<Nosotros/>} />  
-          <Route path='/contacto' element={<Contacto/>} />
+          <Route path='/productos' element={<Productos/>} />     
           <Route path='/producto/:id' element={<Producto/>} />
+          <Route path='/documentacion' element={<Soporte/>} />  
+          <Route path='/soporte/:id' element={<InternaSoporte/>} />
+          <Route path='/nosotros' element={<Nosotros/>} />  
+          <Route path='/galeria' element={<Galeria/>} />  
+          <Route path='/contacto' element={<Contacto/>} />
+          
         </Routes>
        
         {/* FOOTER */}

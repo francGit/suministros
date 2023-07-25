@@ -1,0 +1,21 @@
+.titularPage{
+    font-family: "NoirHeavy";
+}
+
+.soporteCard{
+    & img{
+        filter: grayscale(0) !important;
+    }
+    & .cta{
+        & a{
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--terciary-8);
+        }
+    }
+    &:hover{
+        & img{
+            filter: grayscale(1) !important;
+        }
+    }
+}
