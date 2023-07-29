@@ -2,7 +2,14 @@ import React from 'react'
 import { FaSlidersH } from "react-icons/fa";
 import CardProd from './layout/CardProd';
 import { motion } from 'framer-motion';
+import useFethData from '../hooks/useFetchData'
+import {catUrl} from '../../config'
+import { Preloader } from './utils/Preloader';  
 const Productos = () => {
+  const { loading, result, error } = useFethData(`${catUrl}`);
+ 
+  if (loading) return <Preloader />; 
+  const resultDescendente = result && [...result].reverse();
   return (
     <motion.div className='main'
     initial={{opacity:0}}
@@ -40,19 +47,15 @@ const Productos = () => {
         </div>
         <section>
             <div className="container p-0 pb-5">
-                <div className="row pt-5 gridCards">
+                <div className="row pt-5 gridCards"> 
+                  {
+                    resultDescendente && resultDescendente.map((categoria,index)=>( 
+                      <CardProd key={index} link="/categoria" categoria={categoria}/>
+                  
+                    ))
+                  }
                  
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
-                    <CardProd link={'/categoria'}/>
+               
                  
                 </div>
             </div>

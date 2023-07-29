@@ -1,24 +1,31 @@
-import { NavLink } from "react-router-dom";
-import {Categoria} from "../Categoria"
- export default function CardProd({link}) {
+import { NavLink } from "react-router-dom"; 
+ export default function CardProd({link, categoria }) {
+    const { _ID, nombre, marca, cover_cat } = categoria; 
+    const linkCompleto = `${link}/${_ID}`;
+  
+
   return (
     <div className="cardItem">
         <div className="header">
-            <h2>USABLUEBOOK</h2>
+            <h2>{nombre}</h2>
             <span className="flag">
                 <img src="./arg.png" alt="" />
             </span>
         </div>
         <div className="body">
-            <NavLink to="/categoria">
-            <img src="./A50_ALTA_PRESION.png" alt="" className="img-fluid" />
+            <NavLink to={linkCompleto}>
+            <img src={cover_cat} alt="" className="img-fluid" />
             </NavLink>
         </div>
         <div className="cta"> 
-            <NavLink to={link}>Ver más</NavLink>
+            <NavLink to={linkCompleto}>Ver más</NavLink>
         </div>
         <div className="brand">
-         <img src="./indesur.png" alt="" className="img-fluid" />
+            {
+                marca&& 
+                <img src={ marca} alt="" className="img-fluid" />
+            }
+        
         </div>
     </div>
   )

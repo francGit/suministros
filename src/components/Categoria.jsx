@@ -1,11 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
-import Icondwn from '../assets/Iconly-Download-red.svg'  
-import CardProd from "./layout/CardProd";
+import Icondwn from '../assets/Iconly-Download-red.svg'   
 import { ContacBanner } from "./utils/ContacBanner";
 import { motion } from "framer-motion";
-
-export const Categoria = () => {
+import useFethData from '../hooks/useFetchData' 
+import useFethSubCat from '../hooks/useFetchSub' 
+import useFethRelCatSub from '../hooks/useFetchRelCatSub' 
+import {catUrl} from '../../config'
+import {subcatUrl} from '../../config'
+import {relCatSubUrl} from '../../config'
+import { Preloader } from './utils/Preloader'; 
+import CardSubCat from './layout/CardSubCat';
+export const Categoria = () => { 
+  const { id } = useParams();
+  const { loading, result, error } = useFethData(`${catUrl}/${id}`); 
+  const { loadingCat, dataCat, errorCat } = useFethSubCat(`${subcatUrl}`); 
+  const { loadsub, reldatasub, ersub } = useFethRelCatSub(`${relCatSubUrl}`); 
+  if (loading) return <Preloader />;
+  const {marca, descripcion, nombre} = result;
+  console.log(dataCat)
+  
+  console.log(reldatasub)
+  // const objUrl = Image.map(item => item.imagen);
+  
   return (
     <motion.div className="main pHead catBox"
     initial={{opacity:0}}
@@ -17,36 +34,22 @@ export const Categoria = () => {
           <div className="col-md-4 p-0">
             <div className="boxLeft p-5">
               <div className="brand">
-                <img src="./indesur.png" alt="" className="img-fluid" />
+                {
+                  marca != null ? 
+                <img src={marca} alt="" className="img-fluid" /> : <h2>{nombre}</h2>
+                }
               </div>
               <div className="info">
-                <p>
-                  Iniciada como una industria de metalúrgica general, la empresa
-                  ha crecido y se ha especializado en la producción de Bombas
-                  Neumáticas, convirtiéndose en un referente en la Argentina.
-                </p>
-                <p>
-                  Dirigida por sus fundadores, la compañía basa su desarrollo en
-                  una permanente actualización tecnológica, caracterizándose por
-                  la atención personalizada, un dedicado asesoramiento técnico y
-                  un servicio pos venta confiable.
-                </p>
-                <p>
-                  La compañía desarrolla en instalaciones propias todo el
-                  proceso de producción de sus equipos, incluyendo las etapas de
-                  mecanizado, montaje, ensayo, terminación y embalaje. Un sector
-                  específico está destinado al servicio técnico pos-venta.
-                </p>
-                <p>
-                  A fin de asegurar el cumplimiento de las necesidades y
-                  requerimientos de mercados cada día más exigentes, INDESUR ha
-                  desarrollado un Sistema de Gestión basado en la Norma ISO
-                  9001.
-                </p>
-                <p>Este sistema se encuentra certificado desde el año 2005.</p>
+                {
+                  descripcion&&
+
+                  descripcion
+
+                }
+                 
               </div>
               <div className="overlay">
-                <img src="./bg1.png" className="img-fluid" alt="" />
+                <img src="../bg1.png" className="img-fluid" alt="" />
               </div>
             </div>
           </div>
@@ -55,7 +58,7 @@ export const Categoria = () => {
                <div className="boxTop">
                <div className="boxFiles">
                   <span className="flag">
-                      <img src="./arg.png" alt="" />
+                      <img src="../arg.png" alt="" />
                   </span>
                   <div className="listFiles">
                     <div className="file">
@@ -72,10 +75,12 @@ export const Categoria = () => {
                </div>
                <hr className="hrline" />
                <div className="contCards">
-                    <CardProd link={'/subcategoria'}/>
-                    <CardProd link={'/subcategoria'}/>
-                    <CardProd link={'/subcategoria'}/>
-                    <CardProd link={'/subcategoria'}/> 
+                    {
+                      dataCat&& dataCat.map((subcategoria,index)=>(
+                        <CardSubCat key={index} subcategoria={subcategoria}  />
+                      ))
+                    }
+                   
                     <ContacBanner/>
                </div>
 

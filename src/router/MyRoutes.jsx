@@ -27,12 +27,12 @@ import { Galeria } from '../components/Galeria'
           <Route path='/' element={<Inicio />} />
           <Route path='/inicio' element={<Inicio />} />
           <Route path='*' element={<Page404/>} />
-          <Route path='/categoria' element={<Categoria/>} />  
+          <Route path='/categoria/:id' element={<Categoria/>} />  
           <Route path='/subcategoria' element={<SubCategoria/>} />  
           <Route path='/productos' element={<Productos/>} />     
           <Route path='/producto/:id' element={<Producto/>} />
           <Route path='/documentacion' element={<Soporte/>} />  
-          <Route path='/soporte/:id' element={<InternaSoporte/>} />
+          {/* <Route path='/soporte/:id' element={<InternaSoporte/>} /> */}
           <Route path='/nosotros' element={<Nosotros/>} />  
           <Route path='/galeria' element={<Galeria/>} />  
           <Route path='/contacto' element={<Contacto/>} />

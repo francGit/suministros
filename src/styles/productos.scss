@@ -102,6 +102,7 @@
             font-size: 1.6rem;
             color: var(--primary);
             line-height: 0.8;
+            width: 80%;
         }
         & .flag{
             & img{
@@ -114,17 +115,24 @@
         }
     }
     .body{
+        & a {
+            display: block;
+        }
         & img{
+            margin-top: 1rem;
+            margin-bottom: 1rem;
             filter: grayscale(1);
             transform: scale(1);
             transition: all 0.3s;
+            height: 200px;
+            object-fit: contain;
         }
     }
     .brand{
         & img{
             width: 140px; 
             object-fit: contain;
-            height: 60px;
+            height: 40px;
         }
     }
     & .cta{
@@ -164,6 +172,12 @@
             position: relative;
             z-index: 2;
             margin-bottom: 2rem;
+            mix-blend-mode: multiply;
+
+            & h2{
+                color: var(--primary);
+                font-family: "NoirHeavy";
+            }
         } 
         .overlay{
             display: block;

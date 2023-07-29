@@ -38,7 +38,7 @@ import CardProdb  from "./layout/CardProdb"
                       <img src="./indesur.png" className="img-fluid" alt="" />
                     </div>
                     <div className="cta"> 
-                        <NavLink to="/productos"><i><FaAngleLeft/></i> VOLVER</NavLink>
+                        <NavLink to="/categoria/1"><i><FaAngleLeft/></i> VOLVER</NavLink>
                     </div>
                     </div>         
                 </div>
