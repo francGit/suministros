@@ -50,8 +50,7 @@ const Productos = () => {
                 <div className="row pt-5 gridCards"> 
                   {
                     resultDescendente && resultDescendente.map((categoria,index)=>( 
-                      <CardProd key={index} link="/categoria" categoria={categoria}/>
-                  
+                      <CardProd key={index} link="/categoria" categoria={categoria}/> 
                     ))
                   }
                  

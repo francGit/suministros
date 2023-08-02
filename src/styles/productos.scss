@@ -277,3 +277,14 @@
 }
 
  
+.origen{
+    display: flex;
+    align-items: center;
+    & .flag{
+        width: 30px;
+        margin-left: 10px;
+        & img{
+            width: 100%;
+        }
+    }
+}

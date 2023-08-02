@@ -15,13 +15,6 @@ import CardProdb  from "./layout/CardProdb"
           <div className="row">
             <div className="col-md-5">
               <div className="infoImg">
-                <div className="header">
-                  <h3>País de origen</h3>
-                  <span className="flag">
-                      <img src="./arg.png" alt="" />
-                  </span>
-                  
-                </div>
                 <div className="body">
                 <img src="./D15.png" className="img-fluid" alt="" />
                 </div>
@@ -29,10 +22,15 @@ import CardProdb  from "./layout/CardProdb"
             </div>
             <div className="col-md-7">
               <div className="infoSub">
-                <div className="header">
-                  <div className="breadcrumbs">
+              <div className="breadcrumbs">
                     <small>PRODUCTOS/INDESUR/</small>
-                  </div> 
+                </div> 
+                <div className="header">
+                <div class="origen">
+                <small>País de origen:</small>
+                <span class="flag"><img src="../arg.png" alt="" /></span>
+                </div>
+                
                   <div className="actions">
                     <div className="brand">
                       <img src="./indesur.png" className="img-fluid" alt="" />
@@ -42,6 +40,7 @@ import CardProdb  from "./layout/CardProdb"
                     </div>
                     </div>         
                 </div>
+             
                 <hr className="hr" />
                 <div className="body">
                   <h2>BOMBAS NEUMÁTICAS DE DOBLE DIAFRAGMA</h2>
