@@ -3,13 +3,16 @@ import { FaSlidersH } from "react-icons/fa";
 import CardProd from './layout/CardProd';
 import { motion } from 'framer-motion';
 import useFethData from '../hooks/useFetchData'
-import {catUrl} from '../../config'
+import {catUrlWp} from '../../config'
 import { Preloader } from './utils/Preloader';  
 const Productos = () => {
-  const { loading, result, error } = useFethData(`${catUrl}`);
- 
+  const { loading, result, error } = useFethData(`${catUrlWp}/?per_page=20`);
+ console.log(result)
   if (loading) return <Preloader />; 
-  const resultDescendente = result && [...result].reverse();
+  // const resultDescendente = result && [...result].reverse();
+  // Filtrar elementos con parent igual a 0
+  const filteredResult = result.filter(categoria => categoria.parent === 0);
+
   return (
     <motion.div className='main'
     initial={{opacity:0}}
@@ -49,7 +52,7 @@ const Productos = () => {
             <div className="container p-0 pb-5">
                 <div className="row pt-5 gridCards"> 
                   {
-                    resultDescendente && resultDescendente.map((categoria,index)=>( 
+                    filteredResult && filteredResult.map((categoria,index)=>( 
                       <CardProd key={index} link="/categoria" categoria={categoria}/> 
                     ))
                   }

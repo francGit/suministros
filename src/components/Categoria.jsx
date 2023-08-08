@@ -6,41 +6,21 @@ import { motion } from "framer-motion";
 import useFethData from '../hooks/useFetchData' 
 import useFethSubCat from '../hooks/useFetchSub' 
 import useFethRelCatSub from '../hooks/useFetchRelCatSub' 
-import {catUrl} from '../../config'
-import {subcatUrl} from '../../config'
-import {relCatSubUrl} from '../../config'
+import {catUrlWp} from '../../config' 
 import { Preloader } from './utils/Preloader'; 
 import CardSubCat from './layout/CardSubCat';
 
 export const Categoria = () => { 
   const { id } = useParams();
-  const { loading, result, error } = useFethData(`${catUrl}/${id}`); 
-  const { loadingCat, dataCat, errorCat } = useFethSubCat(`${subcatUrl}`); 
-  const { loadsub, reldatasub, ersub } = useFethRelCatSub(`${relCatSubUrl}`); 
-  if (loading || loadingCat || loadsub) {
+  const { loading, result, error } = useFethData(`${catUrlWp}/${id}`);    
+  const { loadingCat, dataCat, errorCat } = useFethSubCat(`${catUrlWp}/?per_page=20`);    
+  if (loading || loadingCat) {
     return <Preloader />;
-  }
-  const {marca, descripcion, nombre} = result;
-
-  const subcategoriasRelacionadas = reldatasub[id] || [];
-
-   
-  // const subcategoriasMostradas = subcategoriasRelacionadas.map(relacion => {
-  //   const subcategoriaId = relacion.child_object_id;
-  //   const subcategoria = dataCat.find(subcat => subcat.id === subcategoriaId);
-  //   console.log("subcategoriaId:", subcategoriaId); 
-    
-  //   return subcategoria;
-  // }); 
-
-const subcategoriasMostradas = subcategoriasRelacionadas.map(relacion => {
-  const subcategoriaId = relacion.child_object_id;
-  const subcategoria = dataCat.find(subcat => subcat.id === subcategoriaId);
-  return subcategoria;
-});
-
- 
- 
+  } 
+  const { description, name, meta} = result;
+  console.log(result)
+  console.log(dataCat)
+  console.log(id)
   
   return (
     <motion.div className="main pHead catBox"
@@ -54,13 +34,13 @@ const subcategoriasMostradas = subcategoriasRelacionadas.map(relacion => {
             <div className="boxLeft p-5">
               <div className="brand">
                 {
-                  marca != null ? 
-                <img src={marca} alt="" className="img-fluid" /> : <h2>{nombre}</h2>
+                  meta["marca_logo"] != "" ? 
+                <img src={meta["marca_logo"]} alt="" className="img-fluid" /> : <h2>{name}</h2>
                 }
               </div>
               <div className="info">
                 {
-                  descripcion&& descripcion 
+                  description&& description 
                 }
                  
               </div>
@@ -74,7 +54,7 @@ const subcategoriasMostradas = subcategoriasRelacionadas.map(relacion => {
                <div className="boxTop">
                <div className="boxFiles">
                   <span className="flag">
-                      <img src="../arg.png" alt="" />
+                      <img src={meta["bandera-pais"]} alt={meta["pais"]} />
                   </span>
                   <div className="listFiles">
                     <div className="file">
@@ -91,12 +71,10 @@ const subcategoriasMostradas = subcategoriasRelacionadas.map(relacion => {
                </div>
                <hr className="hrline" />
                <div className="contCards">
-               {subcategoriasMostradas.map((subcategoria, index) => ( 
+               {dataCat.map((subcategoria, index) => ( 
                     <CardSubCat key={index} subcategoria={subcategoria} />
                  
-                ))}
-
-                 
+                ))} 
                    
                     <ContacBanner/>
                </div>

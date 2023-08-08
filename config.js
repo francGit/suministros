@@ -8,3 +8,7 @@ export const docUrl = 'https://famu.com.co/suministros/server/wp-json/jet-cct/do
 ///relation
 export const relCatSubUrl = 'https://famu.com.co/suministros/server/wp-json/jet-rel/18';
 export const relProSubUrl = 'https://famu.com.co/suministros/server/wp-json/jet-rel/20';
+///new endpoint wp products
+export const prodUrlWp = "https://famu.com.co/suministros/server/wp-json/wp/v2/products"
+export const catUrlWp = "https://famu.com.co/suministros/server/wp-json/wp/v2/categorias"
+export const paisesUrlWp = "https://famu.com.co/suministros/server/wp-json/wp/v2/paises"

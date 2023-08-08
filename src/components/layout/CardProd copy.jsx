@@ -1,20 +1,20 @@
 import { NavLink } from "react-router-dom"; 
- export default function CardProd({link, categoria }) {
-    const { id, name,meta } = categoria; 
-    const linkCompleto = `${link}/${id}`;
+ export default function CardProdCopy({link, categoria }) {
+    const { _ID, nombre, marca, cover_cat } = categoria; 
+    const linkCompleto = `${link}/${_ID}`;
   
 
   return (
     <div className="cardItem">
         <div className="header">
-            <h2>{name}</h2>
+            <h2>{nombre}</h2>
             <span className="flag">
-                <img src={meta["bandera-pais"]} alt={meta["pais"]} />
+                <img src="./arg.png" alt="" />
             </span>
         </div>
         <div className="body">
             <NavLink to={linkCompleto}>
-            <img src={meta["cover-cat"]} alt="" className="img-fluid" />
+            <img src={cover_cat} alt="" className="img-fluid" />
             </NavLink>
         </div>
         <div className="cta"> 
@@ -22,8 +22,8 @@ import { NavLink } from "react-router-dom";
         </div>
         <div className="brand">
             {
-                meta["marca_logo"] && 
-                <img src={meta["marca_logo"]} alt={meta["marca-nombre"]} className="img-fluid" />
+                marca&& 
+                <img src={ marca} alt="" className="img-fluid" />
             }
         
         </div>
