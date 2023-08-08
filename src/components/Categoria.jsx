@@ -11,17 +11,36 @@ import {subcatUrl} from '../../config'
 import {relCatSubUrl} from '../../config'
 import { Preloader } from './utils/Preloader'; 
 import CardSubCat from './layout/CardSubCat';
+
 export const Categoria = () => { 
   const { id } = useParams();
   const { loading, result, error } = useFethData(`${catUrl}/${id}`); 
   const { loadingCat, dataCat, errorCat } = useFethSubCat(`${subcatUrl}`); 
   const { loadsub, reldatasub, ersub } = useFethRelCatSub(`${relCatSubUrl}`); 
-  if (loading) return <Preloader />;
+  if (loading || loadingCat || loadsub) {
+    return <Preloader />;
+  }
   const {marca, descripcion, nombre} = result;
-  console.log(dataCat)
-  
-  console.log(reldatasub)
-  // const objUrl = Image.map(item => item.imagen);
+
+  const subcategoriasRelacionadas = reldatasub[id] || [];
+
+   
+  // const subcategoriasMostradas = subcategoriasRelacionadas.map(relacion => {
+  //   const subcategoriaId = relacion.child_object_id;
+  //   const subcategoria = dataCat.find(subcat => subcat.id === subcategoriaId);
+  //   console.log("subcategoriaId:", subcategoriaId); 
+    
+  //   return subcategoria;
+  // }); 
+
+const subcategoriasMostradas = subcategoriasRelacionadas.map(relacion => {
+  const subcategoriaId = relacion.child_object_id;
+  const subcategoria = dataCat.find(subcat => subcat.id === subcategoriaId);
+  return subcategoria;
+});
+
+ 
+ 
   
   return (
     <motion.div className="main pHead catBox"
@@ -41,10 +60,7 @@ export const Categoria = () => {
               </div>
               <div className="info">
                 {
-                  descripcion&&
-
-                  descripcion
-
+                  descripcion&& descripcion 
                 }
                  
               </div>
@@ -75,11 +91,12 @@ export const Categoria = () => {
                </div>
                <hr className="hrline" />
                <div className="contCards">
-                    {
-                      dataCat&& dataCat.map((subcategoria,index)=>(
-                        <CardSubCat key={index} subcategoria={subcategoria}  />
-                      ))
-                    }
+               {subcategoriasMostradas.map((subcategoria, index) => ( 
+                    <CardSubCat key={index} subcategoria={subcategoria} />
+                 
+                ))}
+
+                 
                    
                     <ContacBanner/>
                </div>

@@ -28,7 +28,7 @@ import { Galeria } from '../components/Galeria'
           <Route path='/inicio' element={<Inicio />} />
           <Route path='*' element={<Page404/>} />
           <Route path='/categoria/:id' element={<Categoria/>} />  
-          <Route path='/subcategoria' element={<SubCategoria/>} />  
+          <Route path='/subcategoria/:id' element={<SubCategoria/>} />  
           <Route path='/productos' element={<Productos/>} />     
           <Route path='/producto/:id' element={<Producto/>} />
           <Route path='/documentacion' element={<Soporte/>} />  

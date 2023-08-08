@@ -1,9 +1,17 @@
  import { motion } from "framer-motion"
-import { NavLink } from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom"
 import { FaAngleLeft } from "react-icons/fa"
 import Icondwn from '../assets/Iconly-Download-red.svg'  
 import CardProdb  from "./layout/CardProdb"
+import useFethSubCat from '../hooks/useFetchSub' 
+import {subcatUrl} from '../../config'
+import { Preloader } from './utils/Preloader';  
  export const SubCategoria = () => {
+  const { id } = useParams(); 
+  const { loadingCat, dataCat, errorCat } = useFethSubCat(`${subcatUrl}/${id}`)
+  console.log(dataCat)
+  
+  if (loadingCat) return <Preloader />; 
   return (
     <motion.div className='main pHead'
         initial={{opacity:0}}
@@ -16,7 +24,7 @@ import CardProdb  from "./layout/CardProdb"
             <div className="col-md-5">
               <div className="infoImg">
                 <div className="body">
-                <img src="./D15.png" className="img-fluid" alt="" />
+                <img src={dataCat.imagen_sub_categoria} className="img-fluid" alt="" />
                 </div>
               </div>
             </div>
@@ -26,9 +34,9 @@ import CardProdb  from "./layout/CardProdb"
                     <small>PRODUCTOS/INDESUR/</small>
                 </div> 
                 <div className="header">
-                <div class="origen">
+                <div className="origen">
                 <small>País de origen:</small>
-                <span class="flag"><img src="../arg.png" alt="" /></span>
+                <span className="flag"><img src="../arg.png" alt="" /></span>
                 </div>
                 
                   <div className="actions">
