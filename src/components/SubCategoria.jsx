@@ -1,5 +1,5 @@
  import { motion } from "framer-motion"
-import { NavLink, useParams } from "react-router-dom"
+import { NavLink, useParams,useLocation } from "react-router-dom"
 import { FaAngleLeft } from "react-icons/fa"
 import Icondwn from '../assets/Iconly-Download-red.svg'  
 import CardProdb  from "./layout/CardProdb" 
@@ -17,17 +17,19 @@ import { useEffect, useState } from "react"
   const [relatedProducts, setRelatedProducts] = useState([])
 
   useEffect(() => {
-     if(!loadingProd && !errorProd){
+    if(!loadingProd && !errorProd){
       const productsRelatedToSubCat = dataProd.filter(product => product.categorias.includes(parseInt(id)));
       setRelatedProducts(productsRelatedToSubCat)
-     }
+    }
   }, [dataCat, loadingProd, errorProd, id])
   
-
-  console.log(dataProd)
+  
   if (loadingCat || loadingProd) return <Preloader />; 
-  const { description,meta, parent} = dataCat;
-  const {title,metaprod} = dataProd;
+  const { description,meta, parent} = dataCat; 
+  
+  const subcatId = id;
+  // console.log(dataCat) 
+  
   return (
     <motion.div className='main pHead'
         initial={{opacity:0}}
@@ -59,7 +61,10 @@ import { useEffect, useState } from "react"
                 
                   <div className="actions">
                     <div className="brand">
-                      <img src="./indesur.png" className="img-fluid" alt="" />
+                      {
+                        meta["marca_logo"] != "" ? <img src={meta["marca_logo"]} className="img-fluid" alt="" /> : ""
+                      }
+                      
                     </div>
                     <div className="cta"> 
                         <NavLink to={`/categoria/${parseInt(parent)}`}><i><FaAngleLeft/></i> VOLVER</NavLink>
@@ -97,7 +102,7 @@ import { useEffect, useState } from "react"
           <div className="row pt-5 pb-5 gap-2">
             {
                relatedProducts.map(product => (
-                <CardProdb key={product.id} link={`/producto/${product.id}`} product={product} />
+                <CardProdb key={product.id} link={`/producto/${product.id}`} product={product} subCat={subcatId}  />
               ))
             }
              

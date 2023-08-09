@@ -7,7 +7,7 @@ import {catUrlWp} from '../../config'
 import { Preloader } from './utils/Preloader';  
 const Productos = () => {
   const { loading, result, error } = useFethData(`${catUrlWp}/?per_page=20`);
- console.log(result)
+ 
   if (loading) return <Preloader />;  
   const filteredResult = result.filter(categoria => categoria.parent === 0);
   return (

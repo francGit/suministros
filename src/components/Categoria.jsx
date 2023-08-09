@@ -17,7 +17,7 @@ export const Categoria = () => {
     return <Preloader />;
   } 
   const { description, name, meta} = result;
-  console.log(result)  
+    
   
   return (
     <motion.div className="main pHead catBox"

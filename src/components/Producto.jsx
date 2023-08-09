@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion' 
-import { NavLink } from "react-router-dom"
+import { NavLink, useParams,useLocation } from "react-router-dom"
 import { FaAngleLeft } from "react-icons/fa"
 import Icondwn from '../assets/Iconly-Download-red.svg'   
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,9 +10,24 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-export const Producto = () => {
 
+import useFethSubCat from '../hooks/useFetchSub'
+import useFetchProds from '../hooks/useFetchProds'
+import {catUrlWp} from '../../config'  
+import {prodUrlWp} from '../../config' 
+import { Preloader } from './utils/Preloader'; 
+
+export const Producto = () => {
+  const { id } = useParams(); 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const { loadingCat, dataCat, errorCat } = useFethSubCat(`${catUrlWp}/?per_page=20`)
+  const { loadingProd, dataProd, errorProd } = useFetchProds(`${prodUrlWp}/${id}`);
+  const [subcategoria, setSubcategoria] = useState(null);
+  const {search} = useLocation(); 
+  const subcategoriaValue = search.split("?")[1];
+
+
+  if (loadingCat || loadingProd) return <Preloader />; 
   return (
     <motion.div className='main pHead'
       initial={{opacity:0}}
@@ -35,18 +50,14 @@ export const Producto = () => {
                       thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
                       modules={[FreeMode, Navigation, Thumbs]} 
                   >
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide> 
+
+                      {
+                        dataProd.meta.galeria && Object.values(dataProd.meta.galeria).map((img, i)=>(
+                          <SwiperSlide key={i}>
+                             <img src={img.images} className="img-fluid" alt="" />
+                           </SwiperSlide> 
+                        ))
+                      } 
                   </Swiper>
                   <Swiper
                     onSwiper={setThumbsSwiper}
@@ -57,18 +68,13 @@ export const Producto = () => {
                     modules={[FreeMode, Navigation, Thumbs]}  
                      className="mySwiperThmbBox"
                   >
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide>
-                      <SwiperSlide>
-                      <img src="../D15.png" className="img-fluid" alt="" />
-                      </SwiperSlide> 
+                      {
+                        dataProd.meta.galeria && Object.values(dataProd.meta.galeria).map((img, i)=>(
+                          <SwiperSlide key={i}>
+                             <img src={img.images} className="img-fluid" alt="" />
+                           </SwiperSlide> 
+                        ))
+                      } 
                   </Swiper>
 
                 
@@ -78,54 +84,69 @@ export const Producto = () => {
               <div className="infoSub">
                 <div className="header">
                   <div className="breadcrumbs">
-                    <small>PRODUCTOS/INDESUR/</small>
+                    {/* <small>PRODUCTOS/INDESUR/</small> */}
                   </div> 
                   <div className="actions">
-                    <div className="cta"> 
-                        <NavLink to="/productos"><i><FaAngleLeft/></i> VOLVER</NavLink>
-                    </div>
+                  <div className="cta">
+                     
+                      <NavLink to={`/subcategoria/${subcategoriaValue}`}>
+                        <i>
+                          <FaAngleLeft />
+                        </i> 
+                        VOLVER
+                      </NavLink>
+                  
+                  </div>
                     </div>         
                 </div>
                 <hr className="hr" />
                 <div className="body">
-                  <h2>D15</h2> 
-                  <h4>½ pulgada - 33 litros/min</h4>
-                  <p>Es ideal para el suministro de solventes y tintas desde tambores o contenedores de tamaño reducido.</p>
+                  <h2>{dataProd.title.rendered}</h2> 
+                  <h4>{dataProd.meta.caracteristicas}</h4>
+                  <p>{dataProd.meta.descripcion}</p>
                   <div className="actions mt-5">
                       <div className="cta"> 
-                            <NavLink to="/productos"><i><FaAngleLeft/></i> Contáctenos</NavLink>
+                            <NavLink to="/contacto"><i><FaAngleLeft/></i> Contáctenos</NavLink>
                         </div>
-                      <div className="listFiles">
-                        <div className="file">
-                            <NavLink><span>FOLLETO</span> <i><img src={Icondwn} alt="" /></i></NavLink>
+                      <div className="listFiles prodFiles">
+                      {
+                        dataProd.meta.links && Object.values(dataProd.meta.links).map((link, index)=>(
+                          <div className="file" key={index}>
+                            <NavLink to={link.url_link} target='_blank'><span>{link.nombre_link}</span> <i><img src={Icondwn} alt="" /></i></NavLink>
                         </div> 
+                        ))
+                      }
+                        
                       
                       </div> 
                   </div>
                   <h4 className='pt-4 pb-4'>País de origen y marca:</h4>
                     <div className="boxOrigen">
                     <span className="flag">
-                        <img src="../arg.png" alt="" />
+                      {
+                        dataProd.meta.bandera != "" ? <img src={dataProd.meta.bandera} className="img-fluid" alt="" /> : ""
+                      } 
                     </span>
                     <div className="brand">
-                      <img src="../indesur.png" className="img-fluid" alt="" />
+                      {
+                        dataProd.meta.logo_marca != "" ? <img src={dataProd.meta.logo_marca} className="img-fluid" alt="" /> : ""
+                      }
+                       
                     </div>
                     </div>
                   <h2 className="mt-5">ESPECIFICACIONES</h2>
                   <div className="especs">
                     <ul>
-                      <li>
-                        <h3>Título:</h3>
-                        <p>Descripción</p>
-                      </li>
-                      <li>
-                        <h3>Título:</h3>
-                        <p>Descripción</p>
-                      </li>
-                      <li>
-                        <h3>Título:</h3>
-                        <p>Descripción</p>
-                      </li>
+                      {
+                        dataProd.meta.especificaciones && Object.values(dataProd.meta.especificaciones).map((spec, i)=>(
+                          <li key={i}>
+                            <h3>{spec.titulo}</h3>
+                            <p>{spec.descripcion}</p>
+                        </li>
+                        ))
+                      }
+                      
+                    
                     </ul>
                   </div>
                 </div>
