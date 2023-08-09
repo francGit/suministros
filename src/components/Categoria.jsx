@@ -4,8 +4,7 @@ import Icondwn from '../assets/Iconly-Download-red.svg'
 import { ContacBanner } from "./utils/ContacBanner";
 import { motion } from "framer-motion";
 import useFethData from '../hooks/useFetchData' 
-import useFethSubCat from '../hooks/useFetchSub' 
-import useFethRelCatSub from '../hooks/useFetchRelCatSub' 
+import useFethSubCat from '../hooks/useFetchSub'  
 import {catUrlWp} from '../../config' 
 import { Preloader } from './utils/Preloader'; 
 import CardSubCat from './layout/CardSubCat';
@@ -18,9 +17,7 @@ export const Categoria = () => {
     return <Preloader />;
   } 
   const { description, name, meta} = result;
-  console.log(result)
-  console.log(dataCat)
-  console.log(id)
+  console.log(result)  
   
   return (
     <motion.div className="main pHead catBox"
@@ -57,10 +54,18 @@ export const Categoria = () => {
                       <img src={meta["bandera-pais"]} alt={meta["pais"]} />
                   </span>
                   <div className="listFiles">
-                    <div className="file">
-                        <NavLink><span>FOLLETO</span> <i><img src={Icondwn} alt="" /></i></NavLink>
+                    
+                    {meta['links'] && Object.values(meta['links']).map((item, index) => (
+                    <div key={index} className="file">
+                      <NavLink to={item.link} target="_blank"><span>{item.nombre_link}</span> <i><img src={Icondwn} alt="" /></i></NavLink>
                     </div>
-                  
+                  ))}
+
+
+                   
+                   {/* <div className="file">
+                          <NavLink to={ meta['links'].link} target="_blank"><span>{ meta['links'].nombre_link}</span> <i><img src={Icondwn} alt="" /></i></NavLink>
+                        </div> */}
                    
                   </div> 
                 </div>
@@ -71,10 +76,16 @@ export const Categoria = () => {
                </div>
                <hr className="hrline" />
                <div className="contCards">
-               {dataCat.map((subcategoria, index) => ( 
+               {dataCat
+                .filter(subcategoria => subcategoria.parent === parseInt(id)) // Filtra las subcategorías por su parent ID
+                .map((subcategoria, index) => (
+                  <CardSubCat key={index} subcategoria={subcategoria} />
+                ))}
+
+               {/* {dataCat.map((subcategoria, index) => ( 
                     <CardSubCat key={index} subcategoria={subcategoria} />
                  
-                ))} 
+                ))}  */}
                    
                     <ContacBanner/>
                </div>

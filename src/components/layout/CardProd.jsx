@@ -1,4 +1,6 @@
-import { NavLink } from "react-router-dom"; 
+import { NavLink } from "react-router-dom";
+import img from '../../assets/dummy.png' 
+import imgflag from '../../assets/dummyflag.png' 
  export default function CardProd({link, categoria }) {
     const { id, name,meta } = categoria; 
     const linkCompleto = `${link}/${id}`;
@@ -8,13 +10,19 @@ import { NavLink } from "react-router-dom";
     <div className="cardItem">
         <div className="header">
             <h2>{name}</h2>
-            <span className="flag">
-                <img src={meta["bandera-pais"]} alt={meta["pais"]} />
-            </span>
+                {meta[meta["bandera-pais"]] != "" ?
+                <span className="flag">
+                 <img src={meta["bandera-pais"]} alt={meta["pais"]} />
+                 </span>
+
+                  :<span className="flag"><img src={imgflag} alt={meta["pais"]} /> </span>
+            
+                } 
         </div>
         <div className="body">
             <NavLink to={linkCompleto}>
-            <img src={meta["cover-cat"]} alt="" className="img-fluid" />
+             
+            {meta["cover-cat"] != "" ? <img src={meta["cover-cat"]} alt="" className="img-fluid" /> : <img src={img} alt="" className="img-fluid" />}
             </NavLink>
         </div>
         <div className="cta"> 
