@@ -37,8 +37,15 @@ export const Producto = () => {
        <section className="pt-3">
         <div className="container">
           <div className="row">
-            <div className="col-md-5">
-              <div className="infoImg">  
+            <motion.div className="col-md-5" 
+               initial={{ opacity: 0, x:"10%" }}
+               transition={{delay:0.3, duration:0.9} } 
+               whileInView={{ opacity: 1, x:0 }}
+               viewport={{ once: true }}
+            >
+              <div className="infoImg"
+                
+              >  
                   <Swiper 
                       style={{
                         '--swiper-navigation-color': '#fff',
@@ -79,10 +86,15 @@ export const Producto = () => {
 
                 
               </div>
-            </div>
+            </motion.div>
             <div className="col-md-7">
               <div className="infoSub">
-                <div className="header">
+                <motion.div className="header"
+                   initial={{ opacity: 0, y:"30%" }}
+                   transition={{delay:0.3, duration:0.9} } 
+                   whileInView={{ opacity: 1, y:0 }}
+                   viewport={{ once: true }}
+                >
                   <div className="breadcrumbs">
                     {/* <small>PRODUCTOS/INDESUR/</small> */}
                   </div> 
@@ -98,9 +110,14 @@ export const Producto = () => {
                   
                   </div>
                     </div>         
-                </div>
+                </motion.div>
                 <hr className="hr" />
-                <div className="body">
+                <motion.div className="body"
+                   initial={{ opacity: 0, y:"30%" }}
+                   transition={{delay:0.3, duration:0.9} } 
+                   whileInView={{ opacity: 1, y:0 }}
+                   viewport={{ once: true }}
+                >
                   <h2>{dataProd.title.rendered}</h2> 
                   <h4>{dataProd.meta.caracteristicas}</h4>
                   <p>{dataProd.meta.descripcion}</p>
@@ -120,8 +137,19 @@ export const Producto = () => {
                       
                       </div> 
                   </div>
-                  <h4 className='pt-4 pb-4'>País de origen y marca:</h4>
-                    <div className="boxOrigen">
+                    <motion.h4 className='pt-4 pb-4'
+                       initial={{ opacity: 0, y:"30%" }}
+                       transition={{delay:0.3, duration:0.9} } 
+                       whileInView={{ opacity: 1, y:0 }}
+                       viewport={{ once: true }}
+                    >País de origen y marca:</motion.h4>
+                    <motion.div className="boxOrigen"
+                    
+                    initial={{ opacity: 0, y:"30%" }}
+                    transition={{delay:0.3, duration:0.9} } 
+                    whileInView={{ opacity: 1, y:0 }}
+                    viewport={{ once: true }}
+                    >
                     <span className="flag">
                       {
                         dataProd.meta.bandera != "" ? <img src={dataProd.meta.bandera} className="img-fluid" alt="" /> : ""
@@ -133,9 +161,14 @@ export const Producto = () => {
                       }
                        
                     </div>
-                    </div>
+                    </motion.div>
                   <h2 className="mt-5">ESPECIFICACIONES</h2>
-                  <div className="especs">
+                  <motion.div className="especs" 
+                   initial={{ opacity: 0, y:"30%" }}
+                   transition={{delay:0.3, duration:0.9} } 
+                   whileInView={{ opacity: 1, y:0 }}
+                   viewport={{ once: true }}
+                    >
                     <ul>
                       {
                         dataProd.meta.especificaciones && Object.values(dataProd.meta.especificaciones).map((spec, i)=>(
@@ -148,8 +181,8 @@ export const Producto = () => {
                       
                     
                     </ul>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
               </div>
             </div>

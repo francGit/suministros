@@ -40,20 +40,35 @@ import { useEffect, useState } from "react"
         <div className="container">
           <div className="row">
             <div className="col-md-5">
-              <div className="infoImg">
+              <motion.div className="infoImg"
+                 initial={{ opacity: 0, y:"30%" }}
+                 transition={{delay:0.3, duration:0.9} } 
+                 whileInView={{ opacity: 1, y:0 }}
+                 viewport={{ once: true }}
+              >
                 <div className="body">
                   {
                     meta["cover-cat"] != "" ? <img src={meta["cover-cat"]} className="img-fluid" alt="" /> : <img src={img} className="img-fluid" alt="" />  
                   }
                 </div>
-              </div>
+              </motion.div>
             </div> 
             <div className="col-md-7">
               <div className="infoSub">
-              <div className="breadcrumbs">
+              <motion.div className="breadcrumbs"
+                 initial={{ opacity: 0, y:"30%" }}
+                 transition={{delay:0.3, duration:0.9} } 
+                 whileInView={{ opacity: 1, y:0 }}
+                 viewport={{ once: true }}
+              >
                     <small>PRODUCTOS/{meta["marca_nombre"]}</small>
-                </div> 
-                <div className="header">
+                </motion.div> 
+                <motion.div className="header"
+                 initial={{ opacity: 0, y:"30%" }}
+                 transition={{delay:0.3, duration:0.9} } 
+                 whileInView={{ opacity: 1, y:0 }}
+                 viewport={{ once: true }}
+                >
                 <div className="origen">
                 <small>País de origen:</small>
                 <span className="flag"><img src={meta["bandera-pais"]} alt="" /></span>
@@ -70,10 +85,15 @@ import { useEffect, useState } from "react"
                         <NavLink to={`/categoria/${parseInt(parent)}`}><i><FaAngleLeft/></i> VOLVER</NavLink>
                     </div>
                     </div>         
-                </div>
+                </motion.div>
              
                 <hr className="hr" />
-                <div className="body">
+                <motion.div className="body"
+                   initial={{ opacity: 0  }}
+                   transition={{delay:0.3, duration:0.9} } 
+                   whileInView={{ opacity: 1  }}
+                   viewport={{ once: true }}
+                >
                   <h2>{meta["nombre-completo"]}</h2>
                   <h4>{meta["caracteristicas"]}</h4>
                   <p>{description}</p>
@@ -90,7 +110,7 @@ import { useEffect, useState } from "react"
                       </div> 
                   </div>
                   <h2 className="mt-5">REFERENCIAS</h2>
-                </div>
+                </motion.div>
 
               </div>
             </div>

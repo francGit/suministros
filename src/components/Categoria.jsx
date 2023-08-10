@@ -28,7 +28,12 @@ export const Categoria = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4 p-0">
-            <div className="boxLeft p-5">
+            <motion.div className="boxLeft p-5"
+              initial={{ opacity: 0 }}
+              transition={{delay:0.3, duration:0.9} } 
+              whileInView={{ opacity: 1  }}
+              viewport={{ once: true }}
+            >
               <div className="brand">
                 {
                   meta["marca_logo"] != "" ? 
@@ -44,11 +49,16 @@ export const Categoria = () => {
               <div className="overlay">
                 <img src="../bg1.png" className="img-fluid" alt="" />
               </div>
-            </div>
+            </motion.div>
           </div>
           <div className="col-md-8 p-5">
             <div className="boxRigth">
-               <div className="boxTop">
+               <motion.div className="boxTop" 
+                initial={{ opacity: 0, y:"30%" }}
+                transition={{delay:0.3, duration:0.9} } 
+                whileInView={{ opacity: 1, y:0 }}
+                viewport={{ once: true }}
+               >
                <div className="boxFiles">
                   <span className="flag">
                       <img src={meta["bandera-pais"]} alt={meta["pais"]} />
@@ -73,9 +83,11 @@ export const Categoria = () => {
                   <NavLink to="/productos"><i><FaAngleLeft/></i> VOLVER</NavLink>
               </div>
              
-               </div>
+               </motion.div>
                <hr className="hrline" />
-               <div className="contCards">
+               <div className="contCards"
+                
+               >
                {dataCat
                 .filter(subcategoria => subcategoria.parent === parseInt(id)) // Filtra las subcategorías por su parent ID
                 .map((subcategoria, index) => (

@@ -66,13 +66,19 @@ export const Galeria = () => {
           <div className="griImg">
                 {objUrl 
                   && objUrl.map((image, i) => (
-                        <img
+                        <motion.img
                             key={i}
                             src={image}
                             style={{width: "100%", display: "block"}}
                             alt=""
                             loading="lazy"
-                            onClick={() => openLightbox(i)} // Open lightbox on click
+                            onClick={() => openLightbox(i)} 
+                            
+                            initial={{ opacity: 0, y:"10%" }}
+                            transition={{delay:0.6, duration:1} } 
+                            whileInView={{ opacity: 1, y:0 }}
+                            viewport={{ once: true }}
+                       // Open lightbox on click
                         />
                     ))} 
           </div>
@@ -87,17 +93,18 @@ export const Galeria = () => {
                       
                       </span>
                       <motion.img
-                        initial={{opacity:0}}
-                        animate={{opacity:1}}
-                        exit={{opacity:0,transition:{duration:1}}}
+                      initial={{ opacity: 0  }}
+                      transition={{delay:0.3, duration:0.9} } 
+                      whileInView={{ opacity: 1 }} 
+ 
                       src={objUrl[currentImageIndex]} loading="lazy" alt="" />
 
                       <div className="filter"></div>
                       <span className="arrowl" onClick={prevImage}>
-                        Left
+                       
                       </span>
                       <span className="arrowr" onClick={nextImage}>
-                        Right
+                   
                       </span>
                     </motion.div>
                   )}

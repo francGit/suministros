@@ -18,7 +18,8 @@ export const Nosotros = () => {
   if(loading) return <Preloader/>
   return (
     <motion.div className='main'
-    initial={{opacity:0}}
+    
+         initial={{opacity:0}}
         animate={{opacity:1}}
         exit={{opacity:0, transition:{duration:1}}}
     >
@@ -29,15 +30,25 @@ export const Nosotros = () => {
             <h1>Nosotros</h1>
             </div>
           </div>
-          <div className="row boxWt mt-4">
+          <motion.div className="row boxWt mt-4"
+          initial={{ opacity: 0, y:"10%" }}
+          transition={{delay:0.6, duration:1} } 
+          whileInView={{ opacity: 1, y:0 }}
+          viewport={{ once: true }}
+          >
             <div className="col-md-3">
             <h2>MISIÓN</h2>
             </div>
             <div className="col-md-9">
             <p>{result.descripcion_mision}</p>
             </div>
-          </div>
-          <div className="row mt-4">
+          </motion.div>
+          <motion.div className="row mt-4"
+          initial={{ opacity: 0, y:"10%" }}
+          transition={{delay:0.6, duration:1} } 
+          whileInView={{ opacity: 1, y:0 }}
+          viewport={{ once: true }}
+          >
             <div className="col-md-9">
             <div className="row boxBk">
                 <div className="col-md-4">
@@ -53,19 +64,29 @@ export const Nosotros = () => {
                 <img src={`${result.image_general}`} className='img-fluid' alt="" />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       <section className='history pt-5 pb-5'>
         <div className="container">
           <div className="row">
-            <div className="col-md-4 pb-4">
+            <motion.div className="col-md-4 pb-4"
+              initial={{ opacity: 0, y:"10%" }}
+              transition={{delay:0.6, duration:1} } 
+              whileInView={{ opacity: 1, y:0 }}
+              viewport={{ once: true }}
+            >
               <h2 className='title'>{result.titular}</h2>
-            </div>
-            <div className="col-md-8">
+            </motion.div>
+            <motion.div className="col-md-8"
+              initial={{ opacity: 0, y:"10%" }}
+              transition={{delay:0.6, duration:1} } 
+              whileInView={{ opacity: 1, y:0 }}
+              viewport={{ once: true }}
+            >
               <h2 className='subTitle'>{result.subtitulo}</h2>
               <h3 className='subDesc'>{result.descripcion}</h3>
-            </div>
+            </motion.div>
           </div>
           <div className="row">
             <div className="col-md-4">
@@ -90,14 +111,14 @@ export const Nosotros = () => {
                       direction={'vertical'} 
                   >
 
-{  result.anios && Object.values(result.anios).map((item, index) => (
-              <SwiperSlide key={index}>
-                   <div className="pane">
-                      <h3>{item.anio}</h3>
-                      <hr />
-                      <div dangerouslySetInnerHTML={{ __html: item.contenido }}/>
-                      </div> 
-              </SwiperSlide>
+            {  result.anios && Object.values(result.anios).map((item, index) => (
+                  <SwiperSlide key={index}>
+                      <div className="pane">
+                          <h3>{item.anio}</h3>
+                          <hr />
+                          <div dangerouslySetInnerHTML={{ __html: item.contenido }}/>
+                          </div> 
+                  </SwiperSlide>
                           ))
             } 
  
@@ -110,7 +131,7 @@ export const Nosotros = () => {
                   <div className="boxYear"> 
                   <Swiper
                     onSwiper={setThumbsSwiper}
-                    spaceBetween={10}
+                    spaceBetween={6}
                     slidesPerView={3}
                     direction={'vertical'} 
                     watchSlidesProgress={true}
@@ -135,12 +156,22 @@ export const Nosotros = () => {
           </div>
         </div>
       </section>
-      <section className='politicas pt-5 pb-5'>
+      <motion.section className='politicas pt-5 pb-5'
+      initial={{ opacity: 0, y:"10%" }}
+      transition={{delay:0.6, duration:1} } 
+      whileInView={{ opacity: 1, y:0 }}
+      viewport={{ once: true }}
+      >
         <div className="container">
           <div className="row">
-            <div className="col-md-4">
+            <motion.div className="col-md-4"
+              initial={{ opacity: 0, y:"10%" }}
+              transition={{delay:0.6, duration:1} } 
+              whileInView={{ opacity: 1, y:0 }}
+              viewport={{ once: true }}
+            >
               <h2 className='subTitle'>Políticas de calidad</h2>
-            </div>
+            </motion.div>
             <div className="col-md-8">
               <p>{result.info_politicas}</p>
             </div>
@@ -161,13 +192,13 @@ export const Nosotros = () => {
                   </p>
                 </div>
               </div>
-                          ))
+               ))
             }
               
              
           </div>
         </div>
-      </section>
+      </motion.section>
 
     </motion.div>
   )

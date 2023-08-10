@@ -11,14 +11,15 @@ const Productos = () => {
   if (loading) return <Preloader />;  
   const filteredResult = result.filter(categoria => categoria.parent === 0);
   return (
-    <motion.div className='main'
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0,transition:{duration:1}}}
-    >
+    <div className='main' >
         <div className="headerProd">
             <div className="container">
-              <div className="row d-flex justify-content-between align-items-center">
+              <motion.div className="row d-flex justify-content-between align-items-center"
+                initial={{ opacity: 0, y:"30%" }}
+                transition={{delay:0.3, duration:0.9} } 
+                whileInView={{ opacity: 1, y:0 }}
+                viewport={{ once: true }}
+              >
                 <div className="col"><h2 className='title'>PRODUCTOS</h2></div>
                 <div className="col">
                   <div className="boxfilter">
@@ -42,7 +43,7 @@ const Productos = () => {
                       </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
         </div>
         <section>
@@ -59,7 +60,7 @@ const Productos = () => {
                 </div>
             </div>
         </section>
-    </motion.div>
+    </div>
   )
 }
 

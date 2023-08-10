@@ -2,6 +2,7 @@ import {useEffect } from 'react'
 import { NavLink } from "react-router-dom"
 import Logo from '../../assets/logo.svg'  
 import Icondwn from '../../assets/Iconly-Download.svg'  
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
 export const Header = () => {
    
    useEffect(() => {
@@ -72,6 +73,15 @@ export const Header = () => {
       
             
       </header>
+      <FloatingWhatsApp 
+        phoneNumber="3123939250"
+        accountName="Soporte SIS"
+        avatar='https://suministros.famu.com.co/favicon.svg'
+        placeholder='Escribe un mensaje' 
+        allowClickAway
+        notification
+        notificationSound 
+        />
     </>
   )
 }

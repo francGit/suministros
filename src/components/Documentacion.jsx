@@ -6,17 +6,10 @@ import { motion } from "framer-motion";
 import useFethData from '../hooks/useFetchData'
 import {docUrl} from '../../config'
 import {relCatSubUrl} from '../../config'
-import { Preloader } from './utils/Preloader';  
-import axios from 'axios';
-export const Soporte = () => {
-   const [list, setList] = useState([])
+import { Preloader } from './utils/Preloader';   
+export const Soporte = () => { 
    const { loading, result, error } = useFethData(`${docUrl}`);
-
-   useEffect(() => {
-      axios.get(relCatSubUrl)
-      .then(res => console.log(res.data))
-   }, [])
-   
+ 
   
    if (loading) return <Preloader />;
   return (
@@ -30,7 +23,12 @@ export const Soporte = () => {
         <div className="row">
       
           <div className="col-md-12 p-5 pb-0">
-            <div className="boxRigth">
+            <motion.div className="boxRigth"
+              initial={{ opacity: 0, y:"30%" }}
+              transition={{delay:0.3, duration:0.9} } 
+              whileInView={{ opacity: 1, y:0 }}
+              viewport={{ once: true }}
+            >
                <div className="boxTop">
                <div className="boxFiles"> 
                    <h1 className="titularPage">DOCUMENTACIÓN</h1>
@@ -61,13 +59,18 @@ export const Soporte = () => {
                 </div>
                      
                   </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
      </section>
      <section>
-     <div className="container">
+     <motion.div className="container"
+      initial={{ opacity: 0, y:"30%" }}
+      transition={{delay:0.3, duration:0.9} } 
+      whileInView={{ opacity: 1, y:0 }}
+      viewport={{ once: true }}
+     >
         <div className="row"> 
           <div className="col-md-12 px-5 pb-5">
           <div className="contCards">
@@ -76,7 +79,7 @@ export const Soporte = () => {
                </div>
           </div>
         </div>
-      </div>
+      </motion.div>
      </section>
     </motion.div>
   )

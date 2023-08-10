@@ -16,25 +16,35 @@ const Inicio = () => {
 
   return (
     <>
-      <motion.div className="main"
-        initial={{opacity:0}}
-        animate={{opacity:1}}
-        exit={{opacity:0, transition:{duration:1}}}
-      >
-      
+      <div className="main"> 
         <section className='Hero'>
             <div className="container">
                 <div className="row">
                     <div className="col-md-5 pt-3"> 
-                      <h3>{result.subtitulo}</h3>
+                      <motion.h3
+                        initial={{ opacity: 0, y:"40%" }}
+                        transition={{delay:0.4, duration:0.9} } 
+                        whileInView={{ opacity: 1, y:0 }}
+                        viewport={{ once: true }}
+                      >{result.subtitulo}</motion.h3>
                       <div className="box">
-                      <h1 className='titleHome'> 
+                      <motion.h1 className='titleHome'
+                        initial={{ opacity: 0, y:"30%" }}
+                        transition={{delay:0.3, duration:0.9} } 
+                        whileInView={{ opacity: 1, y:0 }}
+                        viewport={{ once: true }}
+                      > 
                       {result.titular} 
-                      </h1>
+                      </motion.h1>
                       </div>
                     </div>
                     <div className="col-md-7">
-                      <div className="boxSlider">
+                      <motion.div className="boxSlider"
+                        initial={{ opacity: 0, y:"30%" }}
+                        transition={{delay:0.3, duration:0.9} } 
+                        whileInView={{ opacity: 1, y:0 }}
+                        viewport={{ once: true }}
+                      >
                       <Swiper
                         navigation={true} 
                         modules={[Navigation,EffectFade,Autoplay]} 
@@ -55,18 +65,27 @@ const Inicio = () => {
                           
                       </Swiper> 
                       
-                      </div>
+                      </motion.div>
                      
                     </div>
                 </div>
                 <div className="row pt-5 pb-5">
-                <div className="col-md-6">
+                <motion.div className="col-md-6"
+                initial={{ opacity: 0  }}
+                transition={{delay:0.6, duration:0.9} } 
+                whileInView={{ opacity: 1  }}
+                viewport={{ once: true }}
+                >
                       <div className="boxDes">  
                         <p>{result.descripcion}</p>
                       </div>
                        
-                    </div>
-                    <div className="col-md-6">
+                    </motion.div>
+                    <motion.div className="col-md-6"
+                    initial={{ opacity: 0 }}
+                    transition={{delay:0.5, duration:0.9} } 
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}>
                       <h4 className='text-center mb-2'><b>REPRESENTANTES DIRECTOS</b></h4>
                       <div className="boxMarksOne">
                       <Swiper
@@ -132,14 +151,19 @@ const Inicio = () => {
                         } 
                       </Swiper> 
                       </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
         <section className='bannerHome'>
           <div className="container">
             <div className="row">
-              <div className="col-md-8">
+              <motion.div className="col-md-8" 
+                initial={{ opacity: 0 }}
+                transition={{delay:0.5, duration:0.9} } 
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
                         <div className="bannerPromotion">
                            <div className="info">
                             <h2 className='title font-noir-heavy'>{result.titulo_bnn}</h2>
@@ -157,8 +181,13 @@ const Inicio = () => {
                           <NavLink>Ver más</NavLink>
                       </div>
                         </div>
-              </div>
-              <div className="col-md-4">
+              </motion.div>
+              <motion.div className="col-md-4"
+                initial={{ opacity: 0  }}
+                transition={{delay:0.6, duration:0.9} } 
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
                <div className="bannerRenta">
                       <div className="info">
                           <h2 className='title font-noir-heavy'>RENTA DE EQUIPOS</h2>
@@ -171,11 +200,11 @@ const Inicio = () => {
                       </div>
                       <div className="overlay"></div>
                </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
-      </motion.div>
+      </div>
     </>
   
   )
