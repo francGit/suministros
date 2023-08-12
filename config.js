@@ -5,6 +5,7 @@ export const galeryUrl = 'https://famu.com.co/suministros/server/wp-json/jet-cct
 export const catUrl = 'https://famu.com.co/suministros/server/wp-json/jet-cct/categorias';
 export const subcatUrl = 'https://famu.com.co/suministros/server/wp-json/jet-cct/sub_categorias';
 export const docUrl = 'https://famu.com.co/suministros/server/wp-json/jet-cct/documentacion/1';
+export const optiontUrl = 'https://famu.com.co/suministros/server/wp-json/jet-cct/opciones/1';
 ///relation
 export const relCatSubUrl = 'https://famu.com.co/suministros/server/wp-json/jet-rel/18';
 export const relProSubUrl = 'https://famu.com.co/suministros/server/wp-json/jet-rel/20';

@@ -535,3 +535,34 @@ gap: 40px;
     align-items: center;
     justify-content: center;
 }
+
+
+////
+.boxModal{
+    background: #fff;
+    width: 80%;
+    height: 90%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 2%;
+    border-radius: 20px;
+    & .titleModal{ 
+        border-bottom: 1px solid #ededed;
+        padding-bottom: 1rem;
+
+        & h3{
+            font-family: "NoirHeavy";
+        }
+        & span{
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+    }
+    & .bodyModal{
+        height: 94%;
+        overflow-y: scroll; 
+        padding: 1rem 1rem 2rem 1rem;
+        font-family: "Tahoma";
+    }
+}

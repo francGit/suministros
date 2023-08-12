@@ -8,12 +8,14 @@ import useFethSubCat from '../hooks/useFetchSub'
 import useFetchProds from '../hooks/useFetchProds'
 import {catUrlWp} from '../../config'  
 import {prodUrlWp} from '../../config' 
-import { Preloader } from './utils/Preloader';   
+import { Preloader } from './utils/Preloader'; 
+import placeholderimg from '../assets/dummy.png'
+import ProgressiveImage from "react-progressive-graceful-image";  
 import { useEffect, useState } from "react"
  export const SubCategoria = () => {
   const { id } = useParams(); 
   const { loadingCat, dataCat, errorCat } = useFethSubCat(`${catUrlWp}/${id}`)
-  const { loadingProd, dataProd, errorProd } = useFetchProds(`${prodUrlWp}/?per_page=20`);
+  const { loadingProd, dataProd, errorProd } = useFetchProds(`${prodUrlWp}/?per_page=100`);
   const [relatedProducts, setRelatedProducts] = useState([])
 
   useEffect(() => {
@@ -41,14 +43,29 @@ import { useEffect, useState } from "react"
           <div className="row">
             <div className="col-md-5">
               <motion.div className="infoImg"
-                 initial={{ opacity: 0, y:"30%" }}
+                 initial={{ opacity: 0  }}
                  transition={{delay:0.3, duration:0.9} } 
-                 whileInView={{ opacity: 1, y:0 }}
+                 whileInView={{ opacity: 1 }}
                  viewport={{ once: true }}
               >
                 <div className="body">
+               
                   {
-                    meta["cover-cat"] != "" ? <img src={meta["cover-cat"]} className="img-fluid" alt="" /> : <img src={img} className="img-fluid" alt="" />  
+                    meta["cover-cat"] != "" ? 
+                    <ProgressiveImage  
+                    src={meta["cover-cat"]}
+                    placeholder={placeholderimg}
+                  >
+                    {(src, loading) => (
+                      <img
+                        style={{ opacity: loading ? 0.5 : 1 }}
+                        src={src}
+                        alt="an alternative text"
+                        className="img-fluid"
+                      />
+                    )}
+                  </ProgressiveImage>
+                  : <img src={img} className="img-fluid" alt="" />  
                   }
                 </div>
               </motion.div>
@@ -61,7 +78,7 @@ import { useEffect, useState } from "react"
                  whileInView={{ opacity: 1, y:0 }}
                  viewport={{ once: true }}
               >
-                    <small>PRODUCTOS/{meta["marca_nombre"]}</small>
+                <small>PRODUCTOS/{meta["marca_nombre"]}</small>
                 </motion.div> 
                 <motion.div className="header"
                  initial={{ opacity: 0, y:"30%" }}

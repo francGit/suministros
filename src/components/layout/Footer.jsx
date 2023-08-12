@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LogoFooter from '../../assets/logo-withe.svg' 
 
 import { FaFacebookF } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
-import { FaLinkedinIn } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa'; 
+import useFethDataOption from '../../hooks/useFetchDataOption'
+import {optiontUrl} from '../../../config'
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import {Grid} from '@mui/material'
+import { BsXCircle } from "react-icons/bs";
+ 
 export const Footer = () => {
+  const {loadingOption, resultOption, errorOption} = useFethDataOption(`${optiontUrl}`) 
+  const [open, setOpen] = useState(false);
+  const [openB, setOpenB] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
+  if(loadingOption) return <p></p>
   return (
     <section className="footer">
     <div className="container">
@@ -44,7 +58,7 @@ export const Footer = () => {
       <div className="col-md-4">
         <ul className='d-flex justify-content-end gap-2'>
           <li>
-            <a href=""><small>Términos de uso</small></a>
+            <a onClick={handleOpen}><small>Términos de uso</small></a>
           </li>
           <li>
             <a href=""><small>Politicas de privacidad</small></a>
@@ -53,6 +67,53 @@ export const Footer = () => {
       </div>
      </div>
    </div>
+   <Modal
+        open={open}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="boxModal" >
+          
+        <Grid container spacing={2} className='titleModal'>
+          <Grid item xs={11}>
+            <h3>{resultOption.titulo_terminos}</h3>
+          </Grid>
+          <Grid item xs={1}>
+            <span onClick={handleClose}><BsXCircle/></span>
+          </Grid>
+          
+        </Grid>
+          <div className='bodyModal'>
+          <div dangerouslySetInnerHTML={{ __html: resultOption.terminos_de_uso }}/>
+          </div>
+            
+       
+        </Box>
+      </Modal>
+   <Modal
+        open={openB}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="boxModal" >
+          
+        <Grid container spacing={2} className='titleModal'>
+          <Grid item xs={11}>
+            <h3>{resultOption.titulo_terminos} ssss</h3>
+          </Grid>
+          <Grid item xs={1}>
+            <span onClick={handleClose}><BsXCircle/></span>
+          </Grid>
+          
+        </Grid>
+          <div className='bodyModal'>
+          <div dangerouslySetInnerHTML={{ __html: resultOption.terminos_de_uso }}/>
+          </div>
+            
+       
+        </Box>
+      </Modal>
   </section>
+  
   )
 }

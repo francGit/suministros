@@ -5,6 +5,8 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import img from '../assets/dummy.png';
+import ProgressiveImage from "react-progressive-graceful-image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs } from 'swiper/modules';
 import useFethData from '../hooks/useFetchData'
@@ -61,7 +63,19 @@ export const Nosotros = () => {
             </div>
             <div className="col-md-3">
               <div className="boximg">
-                <img src={`${result.image_general}`} className='img-fluid' alt="" />
+                <ProgressiveImage  
+                              src={result.image_general}
+                              placeholder={img}
+                            >
+                              {(src, loading) => (
+                                <img
+                                  style={{ opacity: loading ? 0.5 : 1 }}
+                                  src={src}
+                                  alt=""
+                                  className="img-fluid"
+                                />
+                              )}
+                 </ProgressiveImage>  
               </div>
             </div>
           </motion.div>
@@ -90,7 +104,20 @@ export const Nosotros = () => {
           </div>
           <div className="row">
             <div className="col-md-4">
-              <img src="./imgNs2.jpg" alt="" className='img-fluid imgExtra' />
+            <ProgressiveImage  
+                              src={result.img_historia}
+                              placeholder={img}
+                            >
+                              {(src, loading) => (
+                                <img
+                                  style={{ opacity: loading ? 0.5 : 1 }}
+                                  src={src}
+                                  alt=""
+                                  className="img-fluid imgExtra"
+                                />
+                              )}
+                 </ProgressiveImage> 
+              
             </div>
             <div className="col-md-8">
               <div className="Boxtimeline">

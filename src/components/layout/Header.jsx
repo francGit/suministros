@@ -3,14 +3,17 @@ import { NavLink } from "react-router-dom"
 import Logo from '../../assets/logo.svg'  
 import Icondwn from '../../assets/Iconly-Download.svg'  
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
+import useFethDataOption from '../../hooks/useFetchDataOption'
+import {optiontUrl} from '../../../config'
 export const Header = () => {
-   
+  const {loadingOption, resultOption, errorOption} = useFethDataOption(`${optiontUrl}`) 
    useEffect(() => {
     if (screen.width < 960) {
         autocomplete()
     }  
    }, [autocomplete])
-   
+
+   if(loadingOption) return <p></p>
     
   return (
     <>
@@ -55,8 +58,8 @@ export const Header = () => {
                             <li>
                                 <NavLink to="/contacto" className={({isActive}) => isActive ? "active" : "" }>Contacto</NavLink>
                             </li>
-                            <li>
-                                <NavLink to="" target="_blank" className="brochure">Brochure <i><img src={Icondwn} alt="" /></i></NavLink>
+                            <li> 
+                                <NavLink to={resultOption.link_brochure && resultOption.link_brochure} target="_blank" className="brochure">Brochure <i><img src={Icondwn} alt="" /></i></NavLink>
                             </li>
                         </ul> 
                     </nav>
@@ -74,10 +77,12 @@ export const Header = () => {
             
       </header>
       <FloatingWhatsApp 
-        phoneNumber="3123939250"
+        phoneNumber={resultOption.numero_whatsapp}
         accountName="Soporte SIS"
         avatar='https://suministros.famu.com.co/favicon.svg'
         placeholder='Escribe un mensaje' 
+        statusMessage='Comercializamos soluciones integrales'
+        chatMessage='Hola! 🤝 Como puedo ayudarte?'
         allowClickAway
         notification
         notificationSound 

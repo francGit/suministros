@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import img from '../../assets/dummy.png' 
 import imgflag from '../../assets/dummyflag.png' 
 import { motion  as m } from "framer-motion";
+import ProgressiveImage from "react-progressive-graceful-image"; 
 
  export default function CardProd({link, categoria }) {
     const { id, name,meta } = categoria; 
@@ -39,7 +40,20 @@ import { motion  as m } from "framer-motion";
         >
             <NavLink to={linkCompleto}>
              
-            {meta["cover-cat"] != "" ? <img src={meta["cover-cat"]} alt="" className="img-fluid" /> : <img src={img} alt="" className="img-fluid" />}
+            {meta["cover-cat"] != "" ?
+                <ProgressiveImage  
+                    src={meta["cover-cat"]}
+                    placeholder={img}
+                  >
+                    {(src, loading) => (
+                      <img
+                        style={{ opacity: loading ? 0.5 : 1 }}
+                        src={src}
+                        alt="an alternative text"
+                        className="img-fluid"
+                      />
+                    )}
+                  </ProgressiveImage>  : <img src={img} alt="" className="img-fluid" />}
             </NavLink>
         </m.div>
         <m.div className="cta"

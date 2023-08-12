@@ -10,7 +10,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-
+import ProgressiveImage from "react-progressive-graceful-image"; 
 import useFethSubCat from '../hooks/useFetchSub'
 import useFetchProds from '../hooks/useFetchProds'
 import {catUrlWp} from '../../config'  
@@ -61,7 +61,19 @@ export const Producto = () => {
                       {
                         dataProd.meta.galeria && Object.values(dataProd.meta.galeria).map((img, i)=>(
                           <SwiperSlide key={i}>
-                             <img src={img.images} className="img-fluid" alt="" />
+                            <ProgressiveImage  
+                              src={img.images}
+                              placeholder={img}
+                            >
+                              {(src, loading) => (
+                                <img
+                                  style={{ opacity: loading ? 0.5 : 1 }}
+                                  src={src}
+                                  alt=""
+                                  className="img-fluid"
+                                />
+                              )}
+                            </ProgressiveImage>  
                            </SwiperSlide> 
                         ))
                       } 
@@ -78,7 +90,19 @@ export const Producto = () => {
                       {
                         dataProd.meta.galeria && Object.values(dataProd.meta.galeria).map((img, i)=>(
                           <SwiperSlide key={i}>
-                             <img src={img.images} className="img-fluid" alt="" />
+                             <ProgressiveImage  
+                              src={img.images}
+                              placeholder={img}
+                            >
+                              {(src, loading) => (
+                                <img
+                                  style={{ opacity: loading ? 0.5 : 1 }}
+                                  src={src}
+                                  alt=""
+                                  className="img-fluid"
+                                />
+                              )}
+                            </ProgressiveImage>  
                            </SwiperSlide> 
                         ))
                       } 
@@ -123,7 +147,7 @@ export const Producto = () => {
                   <p>{dataProd.meta.descripcion}</p>
                   <div className="actions mt-5">
                       <div className="cta"> 
-                            <NavLink to="/contacto"><i><FaAngleLeft/></i> Contáctenos</NavLink>
+                            <NavLink to="/contacto">Contáctenos</NavLink>
                         </div>
                       <div className="listFiles prodFiles">
                       {

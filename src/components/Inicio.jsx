@@ -10,6 +10,8 @@ import { motion } from 'framer-motion';
 import useFethData from '../hooks/useFetchData'
 import {iniUrl} from '../../config'
 import { Preloader } from './utils/Preloader';
+import ProgressiveImage from "react-progressive-graceful-image"; 
+import img from '../assets/dummy.png'
 const Inicio = () => {
   const {loading, result, error} = useFethData(`${iniUrl}`)
   if(loading) return <Preloader/>
@@ -57,7 +59,21 @@ const Inicio = () => {
                       >
                         {
                           result.galeria && Object.values(result.galeria).map((item, index) => (
-                            <SwiperSlide key={index}> <img src={item.media_gallery} className='img-fluid' alt="" /> </SwiperSlide>
+                            <SwiperSlide key={index}>
+                              <ProgressiveImage  
+                                src={item.media_gallery}
+                                placeholder={img}
+                              >
+                                {(src, loading) => (
+                                  <img
+                                    style={{ opacity: loading ? 0.5 : 1 }}
+                                    src={src}
+                                    alt=""
+                                    className="img-fluid"
+                                  />
+                                )}
+                              </ProgressiveImage>  
+                              </SwiperSlide>
                           ))
                         }
                         
@@ -113,7 +129,21 @@ const Inicio = () => {
                       >
                          {
                           result.representantes && Object.values(result.representantes).map((item, index) => (
-                            <SwiperSlide key={index}> <img src={item.marca} className='img-fluid' alt="" /> </SwiperSlide>
+                            <SwiperSlide key={index}> 
+                            <ProgressiveImage  
+                                src={item.marca}
+                                placeholder={img}
+                              >
+                                {(src, loading) => (
+                                  <img
+                                    style={{ opacity: loading ? 0.5 : 1 }}
+                                    src={src}
+                                    alt="an alternative text"
+                                    className="img-fluid"
+                                  />
+                                )}
+                              </ProgressiveImage>  
+                            </SwiperSlide>
                           ))
                         }
                           
@@ -146,7 +176,22 @@ const Inicio = () => {
                       >
                         {
                           result.distribuidores && Object.values(result.distribuidores).map((item, index) => (
-                            <SwiperSlide key={index}> <img src={item.marca} className='img-fluid' alt="" /> </SwiperSlide>
+                            <SwiperSlide key={index}> 
+                            <ProgressiveImage  
+                                src={item.marca}
+                                placeholder={img}
+                              >
+                                {(src, loading) => (
+                                  <img
+                                    style={{ opacity: loading ? 0.5 : 1 }}
+                                    src={src}
+                                    alt="an alternative text"
+                                    className="img-fluid"
+                                  />
+                                )}
+                              </ProgressiveImage> 
+                            
+                            </SwiperSlide>
                           ))
                         } 
                       </Swiper> 
@@ -194,7 +239,20 @@ const Inicio = () => {
                           <h4>Con opción de <b>Compra</b></h4>
 
                       </div>
-                          <img src="./EQUIPOS.png" className='img-fluid' alt="" />
+                      <ProgressiveImage  
+                              src="./EQUIPOS.png"
+                              placeholder={img}
+                            >
+                              {(src, loading) => (
+                                <img
+                                  style={{ opacity: loading ? 0.5 : 1 }}
+                                  src={src}
+                                  alt=""
+                                  className="img-fluid imgExtra"
+                                />
+                              )}
+                 </ProgressiveImage> 
+                           
                       <div className="cta">
                           <NavLink>Ver más</NavLink>
                       </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import img from '../../assets/dummy.png' 
-import {motion as m} from 'framer-motion'
+import {motion as m} from 'framer-motion' 
+import ProgressiveImage from "react-progressive-graceful-image"; 
 export default function CardProdb({ product,subcatId }) {
   if (!product) {
     return null; // O puedes renderizar un mensaje de error o componente de carga
@@ -39,7 +40,20 @@ export default function CardProdb({ product,subcatId }) {
          
       {meta.cover != "" ? 
             <NavLink to={`/producto/${product.id}?${subcategoriaValue}`}>
-            <img src={meta.cover} alt="" className="img-fluid" />
+               <ProgressiveImage  
+                    src={meta.cover}
+                    placeholder={img}
+                  >
+                    {(src, loading) => (
+                      <img
+                        style={{ opacity: loading ? 0.5 : 1 }}
+                        src={src}
+                        alt="an alternative text"
+                        className="img-fluid"
+                      />
+                    )}
+                  </ProgressiveImage> 
+
             </NavLink>
              : <img src={img} alt="" className="img-fluid" /> 
        

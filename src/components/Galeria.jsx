@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import useFethData from '../hooks/useFetchData'
 import {galeryUrl} from '../../config'
 import { Preloader } from './utils/Preloader';  
+import placeholderimg from '../assets/dummy.png'
+import ProgressiveImage from "react-progressive-graceful-image";
 export const Galeria = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -66,20 +68,21 @@ export const Galeria = () => {
           <div className="griImg">
                 {objUrl 
                   && objUrl.map((image, i) => (
-                        <motion.img
-                            key={i}
-                            src={image}
-                            style={{width: "100%", display: "block"}}
-                            alt=""
-                            loading="lazy"
-                            onClick={() => openLightbox(i)} 
-                            
-                            initial={{ opacity: 0, y:"10%" }}
-                            transition={{delay:0.6, duration:1} } 
-                            whileInView={{ opacity: 1, y:0 }}
-                            viewport={{ once: true }}
-                       // Open lightbox on click
-                        />
+                    
+                    <ProgressiveImage key={i}
+                    src={image}
+                    placeholder={placeholderimg}
+                  >
+                    {(src, loading) => (
+                      <img
+                        style={{ opacity: loading ? 0.5 : 1 }}
+                        src={src}
+                        alt="an alternative text"
+                        onClick={() => openLightbox(i)} 
+                      />
+                    )}
+                  </ProgressiveImage>
+
                     ))} 
           </div>
             {/* Lightbox */}
