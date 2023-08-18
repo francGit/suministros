@@ -12,11 +12,9 @@ import { Producto } from '../components/Producto'
 import ScrollToTop from '../helpers/ScrollTop'
 import { AnimatePresence } from 'framer-motion'
 import { Soporte } from '../components/Documentacion' 
-import { Galeria } from '../components/Galeria'
+import { Galeria } from '../components/Galeria' 
 
- const MyRoutes = () => { 
-
-
+ const MyRoutes = () => {   
   return (
     <AnimatePresence>
    <BrowserRouter>

@@ -27,7 +27,7 @@ export default function CardProdb({ product,subcatId }) {
         <h2>{title.rendered}</h2>
         <span className="flag">
             {
-                meta.bandera != "" ?  <img src="../arg.png" alt={meta.pais} /> : ""
+                meta.bandera != "" ?  <img src={meta.bandera} alt={meta.pais} /> : ""
             } 
         </span>
       </m.div>

@@ -6,7 +6,7 @@ import useFethData from '../hooks/useFetchData'
 import {catUrlWp} from '../../config'
 import { Preloader } from './utils/Preloader';  
 const Productos = () => {
-  const { loading, result, error } = useFethData(`${catUrlWp}/?per_page=20`);
+  const { loading, result, error } = useFethData(`${catUrlWp}/?per_page=100`);
  
   if (loading) return <Preloader />;  
   const filteredResult = result.filter(categoria => categoria.parent === 0);

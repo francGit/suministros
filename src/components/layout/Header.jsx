@@ -1,4 +1,4 @@
-import {useEffect } from 'react'
+import {useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom"
 import Logo from '../../assets/logo.svg'  
 import Icondwn from '../../assets/Iconly-Download.svg'  
@@ -7,13 +7,19 @@ import useFethDataOption from '../../hooks/useFetchDataOption'
 import {optiontUrl} from '../../../config'
 export const Header = () => {
   const {loadingOption, resultOption, errorOption} = useFethDataOption(`${optiontUrl}`) 
-   useEffect(() => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const closeMenu = () => {
     if (screen.width < 960) {
-        autocomplete()
-    }  
-   }, [autocomplete])
-
+      setIsMenuOpen(false);
+    }
+  };
+  
    if(loadingOption) return <p></p>
+    
+    
     
   return (
     <>
@@ -30,14 +36,14 @@ export const Header = () => {
                 </div>
                 <div className="col-md-10 col-sm-4 mdLogo">
                 <div className="boxNavBar">
-                    <div className="menuToggle "></div>
-                    <nav className="navBarMenu">  
+                <div className={`menuToggle ${isMenuOpen ? 'openToggle' : ''}`} onClick={toggleMenu}></div>
+                <nav className={`navBarMenu ${isMenuOpen ? 'openMenu' : ''}`}> 
                         <ul>
                             <li>
-                                <NavLink to="/" className={({isActive}) => isActive ? "active" : "" } >Inicio</NavLink>
+                                <NavLink to="/" className={({isActive}) => isActive ? "active" : "" } onClick={closeMenu}>Inicio</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/productos" className={({isActive}) => isActive ? "active" : "" }>Productos</NavLink>
+                                <NavLink to="/productos" className={({isActive}) => isActive ? "active" : "" } onClick={closeMenu}>Productos</NavLink>
                             </li>
                             {/* <li>
                                 <NavLink to="/producto/1" className={({isActive}) => isActive ? "active" : "" }>Producto</NavLink>
@@ -47,16 +53,16 @@ export const Header = () => {
                             </li>
                          */}
                             <li>
-                                <NavLink to="/nosotros" className={({isActive}) => isActive ? "active" : "" }>Nosotros</NavLink>
+                                <NavLink to="/nosotros" className={({isActive}) => isActive ? "active" : "" } onClick={closeMenu}>Nosotros</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/documentacion" className={({isActive}) => isActive ? "active" : "" }>Documentación</NavLink> 
+                                <NavLink to="/documentacion" className={({isActive}) => isActive ? "active" : "" } onClick={closeMenu}>Documentación</NavLink> 
                             </li>
                             <li>
-                              <NavLink to="/galeria" className={({isActive}) => isActive ? "active" : "" }>Galeria</NavLink>
+                              <NavLink to="/galeria" className={({isActive}) => isActive ? "active" : "" } onClick={closeMenu}>Galeria</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/contacto" className={({isActive}) => isActive ? "active" : "" }>Contacto</NavLink>
+                                <NavLink to="/contacto" className={({isActive}) => isActive ? "active" : "" } onClick={closeMenu}>Contacto</NavLink>
                             </li>
                             <li> 
                                 <NavLink to={resultOption.link_brochure && resultOption.link_brochure} target="_blank" className="brochure">Brochure <i><img src={Icondwn} alt="" /></i></NavLink>
@@ -91,24 +97,3 @@ export const Header = () => {
   )
 }
 
-///funcionalidad menu mobile
-function autocomplete() {
-  const menuToggle =  document.querySelector('.menuToggle') 
-  const navigation = document.querySelector('.navBarMenu')
-  const boyBox = document.querySelector('.navBarMenu')
-  const inneBtn = document.querySelector('.navBarMenu a')
-  menuToggle.onclick = function(){
-    menuToggle.classList.toggle('openToggle')
-    navigation.classList.toggle('openMenu')
-    boyBox.classList.toggle('openBody')
-  }
-
-  inneBtn.onclick = function(){
-    menuToggle.classList.toggle('openToggle')
-    navigation.classList.toggle('openMenu')
-    boyBox.classList.toggle('openBody')
-  }
-    
-  
-
-}

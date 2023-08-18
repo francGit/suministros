@@ -12,7 +12,7 @@ import CardSubCat from './layout/CardSubCat';
 export const Categoria = () => { 
   const { id } = useParams();
   const { loading, result, error } = useFethData(`${catUrlWp}/${id}`);    
-  const { loadingCat, dataCat, errorCat } = useFethSubCat(`${catUrlWp}/?per_page=20`);    
+  const { loadingCat, dataCat, errorCat } = useFethSubCat(`${catUrlWp}/?per_page=100`);    
   if (loading || loadingCat) {
     return <Preloader />;
   } 

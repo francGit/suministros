@@ -1,23 +1,22 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion'  
-import GoogleMapComponent from './map/GoogleMapComponent'
-import { Button, TextField } from '@mui/material'
+// import GoogleMapComponent from './map/GoogleMapComponent'
+import { Button, TextField, Modal, Box, Typography } from '@mui/material'
 import { FaTelegramPlane } from "react-icons/fa"  
 import { useFormik } from 'formik'
+import useFethDataOption from '../hooks/useFetchDataOption'
+import {optiontUrl} from '../../config'
+import { Preloader } from './utils/Preloader';
+import axios from 'axios';
+
 import  * as Yup from "yup"
 export const Contacto = () => {
+  const {loadingOption, resultOption, errorOption} = useFethDataOption(`${optiontUrl}`) 
  
-  // let initialValues = {
-  //   name: "",
-  //   lastname: "",
-  //   phone:"",
-  //   email:"",
-  //   mensaje:""
-  // }
-
-  // const enviarform = (data) =>{
-  //   console.log(data)
-  // }
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const {handleSubmit,handleChange,values, errors } = useFormik({
     initialValues: {
@@ -34,10 +33,24 @@ export const Contacto = () => {
       email:Yup.string().required("Debes ingresar un email"),
       mensaje:Yup.string().required("Debes ingresar un mensaje"),
     }),
-    onSubmit: (data) =>{
-      console.log(data)
-    }
+    onSubmit: async (data) =>{
+      try {
+        const response = await axios.post('https://suministros.famu.com.co/sendEmail.php', data);
+        if (response.data === 'success') {
+          console.log('Correo enviado exitosamente');
+          // Puedes mostrar un mensaje de éxito al usuario.
+        } else if (response.data === 'too_soon') {
+          setShowModal(true); // Mostrar el modal si el envío es demasiado pronto
+        } else {
+          console.error('Error al enviar el correo');
+          // Manejo de error, como mostrar un mensaje de error.
+        }
+      } catch (error) {
+        console.error('Error al conectar con el servidor', error);
+      }
+    }, 
   })
+  if(loadingOption) return <Preloader/>
  
   return (
     <motion.div className='main pHead'
@@ -170,16 +183,40 @@ export const Contacto = () => {
               viewport={{ once: true }}
             >
               <div className="info pb-4">
-              <h5>Atención al Cliente:</h5><p>Tels. +57 1 2 01 94 46 - +57 1 201 81 21</p><p>Fax. +57 1 3 71 02 14</p><h5>Ubicación:</h5><p>Carrera 32 Nº 13 - 36 - Bogotá, COLOMBIA</p>
+              <div dangerouslySetInnerHTML={{ __html: resultOption.info_contacto }}/>
               </div>
     <div className="map">
-    <GoogleMapComponent/>
+    <div className="grpelem" id="u1709"> 
+    <iframe src="https://www.google.es/maps/d/u/0/embed?mid=1PyTd-9_hb2WXuNRTuz6tWFXA1BcGvus&ehbc=2E312F" width="100%" height="380"/><br /><small>Ver <a href="https://www.google.es/maps/d/u/0/edit?mid=1PyTd-9_hb2WXuNRTuz6tWFXA1BcGvus&usp=sharing"  >Suministros SIS</a> en un mapa más grande</small>
+       </div>
+    {/* <GoogleMapComponent/> */}
     </div>
             </motion.div>
           </div>
         </div>
       </section>
 
+      <Modal
+      open={showModal}
+      onClose={handleCloseModal}
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+    >
+      <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, borderRadius: 4 }}>
+        <Typography id="modal-title" variant="h6" component="h2">
+          ¡Espera un poco más!
+        </Typography>
+        <Typography id="modal-description" sx={{ mt: 2 }}>
+          Debes esperar un tiempo antes de enviar otro correo.
+        </Typography>
+        <Button sx={{ mt: 3 }} variant="contained" onClick={handleCloseModal}>
+          Entendido
+        </Button>
+      </Box>
+    </Modal>
+
     </motion.div>
+
+    
   )
 }

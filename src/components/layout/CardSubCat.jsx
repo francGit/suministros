@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import img from '../../assets/dummy.png'
 import imgflag from '../../assets/dummyflag.png'
 import { motion as m } from "framer-motion";
+import ProgressiveImage from "react-progressive-graceful-image";
  export default function CardSubCat({subcategoria} ) {  
      const {id,name,meta} = subcategoria
   return (
@@ -34,7 +35,20 @@ import { motion as m } from "framer-motion";
             
             {meta["cover-cat"] != "" ? 
             <NavLink to={`/subcategoria/${id}`}>
-            <img src={meta["cover-cat"]} alt="" className="img-fluid" />
+                 <ProgressiveImage  
+                    src={meta["cover-cat"]}
+                    placeholder={img}
+                  >
+                    {(src, loading) => (
+                      <img
+                        style={{ opacity: loading ? 0.5 : 1 }}
+                        src={src}
+                        alt=""
+                        className="img-fluid"
+                      />
+                    )}
+                  </ProgressiveImage> 
+             
             </NavLink>
              : <img src={img} alt="" className="img-fluid" /> 
        

@@ -14,7 +14,7 @@ import ProgressiveImage from "react-progressive-graceful-image";
 import img from '../assets/dummy.png'
 const Inicio = () => {
   const {loading, result, error} = useFethData(`${iniUrl}`)
-  if(loading) return <Preloader/>
+  if(loading) return <Preloader/> 
 
   return (
     <>
@@ -149,6 +149,7 @@ const Inicio = () => {
                           
                       </Swiper> 
                       </div>
+
                       <h5 className='text-center mt-2 mb-2'><b>DISTRIBUIDORES DE:</b></h5>
                       <div className="boxMarksOne">
                       <Swiper
@@ -209,7 +210,11 @@ const Inicio = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                        <div className="bannerPromotion">
+                        <div
+                          style={{ 
+                            background: `url(${result.fondo_de_imagen_bnn})` 
+                          }}
+                        className="bannerPromotion">
                            <div className="info">
                             <h2 className='title font-noir-heavy'>{result.titulo_bnn}</h2>
                             <h5>{result.subtitulo_848}</h5>
@@ -223,7 +228,7 @@ const Inicio = () => {
                               <p>Si desea más información respecto a nuestro productos o requiere ayuda, puede hacerlo desde el siguiente botón.</p>
                           </div>
                           <div className="cta">
-                          <NavLink>Ver más</NavLink>
+                          <NavLink to="/contacto">Ver más</NavLink>
                       </div>
                         </div>
               </motion.div>
@@ -254,7 +259,7 @@ const Inicio = () => {
                  </ProgressiveImage> 
                            
                       <div className="cta">
-                          <NavLink>Ver más</NavLink>
+                          <NavLink to="/galeria">Ver más</NavLink>
                       </div>
                       <div className="overlay"></div>
                </div>

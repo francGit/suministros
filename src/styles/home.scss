@@ -166,7 +166,7 @@ header{
     background-size: 180%;
     background-repeat: no-repeat;
     background-position: 0 33%;
-    min-height: 80vh;
+    min-height: 40vh;
     box-sizing: border-box;
     padding-top: 10%;
     .box{
@@ -278,14 +278,21 @@ gap: 40px;
 }
 
 .redes{
-    
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
     li{
         margin-top: 1rem;
         a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--primary);
             color: var(--terciary-8);
             padding: 0.6rem 0.8rem;
-            border-radius: 30px;
+            border-radius: 30px; 
+            width: 40px;
+            height: 40px;
             transition: all 0.3s;
             &:hover{
                 background-color: var(--primary-3);
@@ -323,10 +330,11 @@ gap: 40px;
     background-color: var(--terciary-10);
 }
 
-.bannerPromotion{
-    background: url(../imgCompra.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.bannerPromotion{ 
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 50% !important;
+    object-fit: cover !important;
     position: relative;
     color: var(--terciary-9);
     padding: 2rem;
@@ -546,6 +554,9 @@ gap: 40px;
     margin: auto;
     margin-top: 2%;
     border-radius: 20px;
+    &:focus-visible{
+        outline: none !important; 
+    }
     & .titleModal{ 
         border-bottom: 1px solid #ededed;
         padding-bottom: 1rem;
@@ -554,9 +565,11 @@ gap: 40px;
             font-family: "NoirHeavy";
         }
         & span{
+            display: block;
             font-size: 1.5rem;
             color: var(--primary);
             cursor: pointer;
+            text-align: right;
         }
     }
     & .bodyModal{
@@ -564,5 +577,33 @@ gap: 40px;
         overflow-y: scroll; 
         padding: 1rem 1rem 2rem 1rem;
         font-family: "Tahoma";
+        /* width */
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    }
+} 
+
+.SwiperMark {
+    & .swiper-slide{
+        & img{
+            max-height: 50px;
+        }
     }
 }

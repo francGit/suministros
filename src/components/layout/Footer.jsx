@@ -1,22 +1,19 @@
 import React, { useState } from 'react'
 import LogoFooter from '../../assets/logo-withe.svg' 
-
-import { FaFacebookF } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
-import { FaLinkedinIn } from 'react-icons/fa'; 
 import useFethDataOption from '../../hooks/useFetchDataOption'
 import {optiontUrl} from '../../../config'
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import {Grid} from '@mui/material'
-import { BsXCircle } from "react-icons/bs";
- 
+import { BsXCircle } from "react-icons/bs"; 
 export const Footer = () => {
   const {loadingOption, resultOption, errorOption} = useFethDataOption(`${optiontUrl}`) 
   const [open, setOpen] = useState(false);
   const [openB, setOpenB] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpenB = () => setOpenB(true);
+  const handleCloseB = () => setOpenB(false);
   
   if(loadingOption) return <p></p>
   return (
@@ -29,24 +26,22 @@ export const Footer = () => {
           </div>
        </div>
        <div className="col-md-3">
-       <h5>Atención al Cliente:</h5>
-        <p>Tels. +57 1 2 01 94 46 - +57 1 201 81 21</p>
-        <p>Fax. +57 1 3 71 02 14</p>
-        <h5>Ubicación:</h5>
-        <p>Carrera 32 Nº 13 - 36 - Bogotá, COLOMBIA</p> 
+       <div dangerouslySetInnerHTML={{ __html: resultOption.info_contacto }}/>
        </div>
        <div className="col-md-3">
-       <h5>Servicio Técnico:</h5>
-        <p>servicio@suministrossis.com</p> 
-        <h5>Compras y seguimiento:</h5>
-        <p>sis@suministrossis.com</p> 
+       <div dangerouslySetInnerHTML={{ __html: resultOption.contacto_emails }}/> 
        </div>
-       <div className="col-md-2">
+       <div className="col-md-3">
         <h5>Síguenos:</h5>
        <ul className='px-0 d-flex justify-content-start gap-2 redes'>
-         <li><a href="https://www.behance.net/famupinto" target="_blank" rel="noreferrer"><FaFacebookF /></a></li>
+        {
+          resultOption.redes && Object.values(resultOption.redes).map((item,i)=>(
+            <li key={i}><a href={item.link} target="_blank" rel="noreferrer"><i className={`fa ${item.icon}`}></i></a></li>
+          ))
+        }
+         {/* <li><a href="https://www.behance.net/famupinto" target="_blank" rel="noreferrer"><FaFacebookF /></a></li>
          <li><a href="https://github.com/francGit" target="_blank" rel="noreferrer"><FaTwitter /></a></li>
-         <li><a href="https://www.linkedin.com/in/francisco-jose-muneton-pinto/" target="_blank" rel="noreferrer"><FaLinkedinIn /></a></li>
+         <li><a href="https://www.linkedin.com/in/francisco-jose-muneton-pinto/" target="_blank" rel="noreferrer"><FaLinkedinIn /></a></li> */}
        </ul>
        </div>
      </div>
@@ -61,7 +56,7 @@ export const Footer = () => {
             <a onClick={handleOpen}><small>Términos de uso</small></a>
           </li>
           <li>
-            <a href=""><small>Politicas de privacidad</small></a>
+            <a onClick={handleOpenB}><small>Politicas de privacidad</small></a>
           </li>
         </ul>
       </div>
@@ -99,15 +94,15 @@ export const Footer = () => {
           
         <Grid container spacing={2} className='titleModal'>
           <Grid item xs={11}>
-            <h3>{resultOption.titulo_terminos} ssss</h3>
+            <h3>{resultOption.titulo_politicas}</h3>
           </Grid>
           <Grid item xs={1}>
-            <span onClick={handleClose}><BsXCircle/></span>
+            <span onClick={handleCloseB}><BsXCircle/></span>
           </Grid>
           
         </Grid>
           <div className='bodyModal'>
-          <div dangerouslySetInnerHTML={{ __html: resultOption.terminos_de_uso }}/>
+          <div dangerouslySetInnerHTML={{ __html: resultOption.politicas_de_privacidad }}/>
           </div>
             
        

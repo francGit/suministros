@@ -23,6 +23,116 @@
    .Hero{
     padding-top: 140px;
    }
-  }
+   .Hero .box{
+    width: 100%;
+    & .titleHome{
+      width: 100%;
+      font-size: 2rem;
+    }
+   }
+   .boxDes{
+    font-size: 1.1rem;
+    min-height: auto;
+    margin-bottom: 2rem;
+   }
+   .mySwiperHero .swiper-button-prev{
+    left: 62%;
+   }
+   .bannerPromotion{
+    & .info{
+padding: 0;
+      & .title{
+        font-size: 1.6rem;
+      }
 
- 
+    }
+   }
+
+   .footer{
+    padding-bottom: 6rem;
+    & ul{
+      padding: 0 !important;
+      justify-content: start !important;
+    }
+   }
+
+   .bannerContact{
+    flex-direction: column;
+    padding: 1rem;
+    gap: 20px;
+   }
+
+   .gridCards{
+    justify-content: center;
+   }
+
+   .headerProd .title{
+    font-size: 2.6rem;
+    text-align: center;
+   }
+
+   .catBox .boxLeft .info{
+    height: 200px;
+    box-sizing: border-box;
+    padding: 0 20px 20px 20px;
+    overflow-y: scroll;
+    /* width */
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+   }
+   .boxTop{
+    padding-right: 0;
+   }
+   .infoImg {
+     .body{
+      img{
+        width: 50%;
+      }
+     }
+   }
+ .breadcrumbs{
+    text-align: center;
+  }
+   .infoSub .header{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+   
+   }
+   .singleProd{
+    margin: auto;
+   }
+
+   .heroNosotros{
+    h1{
+      font-size: 3rem;
+      text-align: center;
+    }
+   }
+   
+   .imgExtra{
+    height: 200px;
+    display: none;
+   }
+   header .navBarMenu::after{
+    background: rgba(255, 255, 255, 1);
+   }
+  }
