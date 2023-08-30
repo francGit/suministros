@@ -197,7 +197,7 @@ export const Producto = () => {
                       {
                         dataProd.meta.especificaciones && Object.values(dataProd.meta.especificaciones).map((spec, i)=>(
                           <li key={i}>
-                            <h3>{spec.titulo}</h3>
+                            <h5>{spec.titulo}</h5>
                             <p>{spec.descripcion}</p>
                         </li>
                         ))

@@ -19,9 +19,7 @@ import ProgressiveImage from "react-progressive-graceful-image";
              viewport={{ once: true }}
         >
             <h2>{name} </h2>
-            {meta[meta["bandera-pais"]] != "" ? 
-            
-            <span className="flag"> <img src={meta["bandera-pais"]} alt={meta["pais"]} className="img-fluid" /></span> : <span className="flag"><img src={imgflag} className="img-fluid" /></span>
+            {meta[meta["bandera-pais"]] != "" ? <span className="flag"> <img src={meta["bandera-pais"]} className="img-fluid" /></span> : <span className="flag"><img src={imgflag} className="img-fluid" /></span>
                  
               
              }

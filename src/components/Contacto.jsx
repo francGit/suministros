@@ -34,20 +34,8 @@ export const Contacto = () => {
       mensaje:Yup.string().required("Debes ingresar un mensaje"),
     }),
     onSubmit: async (data) =>{
-      try {
-        const response = await axios.post('https://suministros.famu.com.co/sendEmail.php', data);
-        if (response.data === 'success') {
-          console.log('Correo enviado exitosamente');
-          // Puedes mostrar un mensaje de éxito al usuario.
-        } else if (response.data === 'too_soon') {
-          setShowModal(true); // Mostrar el modal si el envío es demasiado pronto
-        } else {
-          console.error('Error al enviar el correo');
-          // Manejo de error, como mostrar un mensaje de error.
-        }
-      } catch (error) {
-        console.error('Error al conectar con el servidor', error);
-      }
+      console.log(data)
+      setShowModal(true);
     }, 
   })
   if(loadingOption) return <Preloader/>
@@ -203,7 +191,7 @@ export const Contacto = () => {
       aria-describedby="modal-description"
     >
       <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, borderRadius: 4 }}>
-        <Typography id="modal-title" variant="h6" component="h2">
+      <Typography id="modal-title" variant="h6" component="h2">
           ¡Espera un poco más!
         </Typography>
         <Typography id="modal-description" sx={{ mt: 2 }}>
