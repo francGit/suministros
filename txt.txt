@@ -1,0 +1,23 @@
+suministros company
+suministrosnewdev@gmail.com
+Suministros2023
+
+
+EmailJS 
+suminstrosdev
+suministrosnewdev@gmail.com
+Suministros2023Js
+
+
+API keys
+
+Public Key
+P6ILEGKouaFxiEdDQ
+Private Key
+HAKRGwqnMxnOeasFAjxZD
+
+TEMPLATE
+
+template_5i29ip2
+
+service_3vumeva

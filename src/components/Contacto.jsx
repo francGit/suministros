@@ -6,18 +6,25 @@ import { FaTelegramPlane } from "react-icons/fa"
 import { useFormik } from 'formik'
 import useFethDataOption from '../hooks/useFetchDataOption'
 import {optiontUrl} from '../../config'
-import { Preloader } from './utils/Preloader';
-import axios from 'axios';
-
+import { Preloader } from './utils/Preloader'; 
+import emailjs from '@emailjs/browser';
+import ApiKey from '../mail/ApiKey'
 import  * as Yup from "yup"
 export const Contacto = () => {
   const {loadingOption, resultOption, errorOption} = useFethDataOption(`${optiontUrl}`) 
  
   const [showModal, setShowModal] = useState(false);
+  const [showModalSend, setShowModalSend] = useState(false);
+  const [isFormDisabled, setIsFormDisabled] = useState(false); 
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  const handleCloseModalSend = () => {
+    setShowModalSend(false);
+  };
 
+  
+ 
   const {handleSubmit,handleChange,values, errors } = useFormik({
     initialValues: {
       name: "",
@@ -33,11 +40,37 @@ export const Contacto = () => {
       email:Yup.string().required("Debes ingresar un email"),
       mensaje:Yup.string().required("Debes ingresar un mensaje"),
     }),
-    onSubmit: async (data) =>{
-      console.log(data)
-      setShowModal(true);
+    onSubmit: (values, { resetForm }) => {
+        if(isFormDisabled){
+          return(
+            setShowModal(true)
+          )
+        }else{
+             // Obtén una referencia al formulario HTML utilizando la función handleSubmit
+            const form = document.querySelector(".form");
+          
+            emailjs
+              .sendForm('service_3vumeva', 'template_5i29ip2', form, 'P6ILEGKouaFxiEdDQ')
+              .then((response) => {
+                //console.log(response);
+                setShowModalSend(true); // Mostrar el modal de éxito después de enviar el correo
+                resetForm(); // Reiniciar el formulario después de un envío exitoso
+                setIsFormDisabled(true); // Deshabilitar el formulario
+                setTimeout(() => {
+                  setIsFormDisabled(false); // Habilitar el formulario después de 1 minuto
+                }, 60000);
+              })
+              .catch((error) => console.error(error));
+          
+            ///console.log(values);
+        }
+
+     
     }, 
   })
+
+ 
+
   if(loadingOption) return <Preloader/>
  
   return (
@@ -185,6 +218,27 @@ export const Contacto = () => {
       </section>
 
       <Modal
+      open={showModalSend}
+      onClose={handleCloseModalSend}
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+    >
+      <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, borderRadius: 4 }}>
+      <Typography id="modal-title" variant="h6" component="h2">
+          ¡Correo enviado correctamente!
+        </Typography>
+        <Typography id="modal-description" sx={{ mt: 2 }}>
+          gracias por contactarnos
+        </Typography>
+        <Button sx={{ mt: 3 }} variant="contained" style={{backgroundColor:'red'}} onClick={handleCloseModalSend}>
+          Cerrar
+        </Button>
+      </Box>
+    </Modal>
+
+
+
+      <Modal
       open={showModal}
       onClose={handleCloseModal}
       aria-labelledby="modal-title"
@@ -192,13 +246,13 @@ export const Contacto = () => {
     >
       <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, borderRadius: 4 }}>
       <Typography id="modal-title" variant="h6" component="h2">
-          ¡Espera un poco más!
+          ¡Por el monento no puede enviar más correos!
         </Typography>
         <Typography id="modal-description" sx={{ mt: 2 }}>
           Debes esperar un tiempo antes de enviar otro correo.
         </Typography>
-        <Button sx={{ mt: 3 }} variant="contained" onClick={handleCloseModal}>
-          Entendido
+        <Button sx={{ mt: 3 }} variant="contained" style={{backgroundColor:'red'}} onClick={handleCloseModal}>
+          Cerrar
         </Button>
       </Box>
     </Modal>
