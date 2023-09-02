@@ -50,7 +50,7 @@ export const Contacto = () => {
             const form = document.querySelector(".form");
           
             emailjs
-              .sendForm('service_3vumeva', 'template_5i29ip2', form, 'P6ILEGKouaFxiEdDQ')
+              .sendForm(ApiKey.SERVICE_ID, ApiKey.TEMPLATE_ID, form, ApiKey.PUBLIC_KEY)
               .then((response) => {
                 //console.log(response);
                 setShowModalSend(true); // Mostrar el modal de éxito después de enviar el correo
